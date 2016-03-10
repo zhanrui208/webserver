@@ -76,10 +76,12 @@ function IsString(str) {
 //	var str = document.getElementById('str').value.trim();
 	if (str.length != 0) {
 		reg = /^[a-zA-Z0-9_]+$/;
-		if (!reg.test(str)) {
-			alert("对不起，您输入的字符串类型格式不正确!");// 请将“字符串类型”要换成你要验证的那个属性名称！
+		if (reg.test(str)) {
+			return true;
+//			alert("对不起，您输入的字符串类型格式不正确!");// 请将“字符串类型”要换成你要验证的那个属性名称！
 		}
 	}
+	return false;
 }
 
 // 判断输入的字符是否为中文
@@ -98,10 +100,12 @@ function IsEmail(str) {
 //	var str = document.getElementById(id).value.trim();
 	if (str.length != 0) {
 		reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-		if (!reg.test(str)) {
-			alert("对不起，您输入的字符串类型格式不正确!");// 请将“字符串类型”要换成你要验证的那个属性名称！
+		if (reg.test(str)) {
+			return true;
+//			alert("对不起，您输入的字符串类型格式不正确!");// 请将“字符串类型”要换成你要验证的那个属性名称！
 		}
 	}
+	return false;
 }
 
 // 判断输入的邮编(只能为六位)是否正确

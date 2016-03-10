@@ -80,7 +80,7 @@ public class UserinfoDao extends CommonDao{
 		params[0]=UserName;
 		params[1]=Password;
 		 List<Map<String,Object>> list=query(sql, params);
-		 if  (!org.springframework.util.StringUtils.isEmpty(list)){
+		 if  (list!=null && list.size()>0){
 			 isTrue=true;
 		 }
 		return isTrue;

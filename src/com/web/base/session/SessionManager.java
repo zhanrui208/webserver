@@ -199,15 +199,35 @@ public class SessionManager {
 	/*
 	 * 保存用户id的
 	 */
-	public static void saveUserSession(HttpServletRequest req,String UserId) {
-		req.getSession().setAttribute(CURRENT_SESSION_ATTR, UserId);;
+	public static void saveUserSession(HttpServletRequest res,String UserId) {
+		res.getSession().setAttribute(CURRENT_SESSION_ATTR, UserId);;
 	}
 	
 	/*
 	 * 保存用户id的
 	 */
-	public static String getUserSession(HttpServletRequest req) {
-		return (String) req.getSession().getAttribute(CURRENT_SESSION_ATTR);
+	public static String getUserSession(HttpServletRequest res) {
+		return (String) res.getSession().getAttribute(CURRENT_SESSION_ATTR);
+	}
+	
+	
+	/*
+	 * 保存用户id的
+	 */
+	public static void saveSession(HttpServletRequest req,String key,String value) {
+		req.getSession().setAttribute(key, value);;
+	}
+	
+	/*
+	 * 保存用户id的
+	 */
+	public static String getSession(HttpServletRequest req,String key) {
+		return (String) req.getSession().getAttribute(key);
+	}
+	
+	
+	public static void removeSession(HttpServletRequest req,String key) {
+		 req.getSession().removeAttribute(key);
 	}
 	
 	

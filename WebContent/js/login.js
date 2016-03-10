@@ -16,9 +16,12 @@ function login(){
 		}
 	}).done(function(data) {
 	  if(data['success']){
-		  window.location="userhome";
+		  if (data['errorCode']==100){
+			  window.location="userhome";
+		  }else{
+			  alert(data['error']);
+		  }
 	  }
-//	  $.parseJSON(data)
 	  else{
 		  alert("登录失败!");
 	  }

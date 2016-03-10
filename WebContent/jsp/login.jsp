@@ -20,27 +20,6 @@
 		<%@ include file="head.jsp"%> 
 		<!-- 头部分 -->
 		
-		<!-- 头部分 -->
-		<div id = "main_head">
-			<!-- logo -->
-			<div id = "main_logo" >
-				<a id="logo" href="home" title="Agora" rel="home">
-					<img src="/image/LOGO.png" alt="加载图片失败">
-				</a>
-			</div>
-
-			<!-- 退出按钮 -->
-			<div id ="userlogout_div">
-				<a id ="userlogout_btn">退出</a>
-			</div>
-						
-			<!-- 显示名字 -->
-			<div id ="username_div">
-				<a id ="username_val">hello</a>
-				<a id ="username_other">,晚上好</a>
-			</div>
-		</div>
-		
 		<!-- 主体部分 -->
 		<div id = main_body>
 			<div id = btnlogin>
@@ -59,7 +38,7 @@
 						<a class="forgetpass" href="http://qhongmeet.com/forgetPass/" style="color: blue;font-size: 10px"> 忘记密码？</a>
 				</div>
 				<div id="login_msg_div">
-					<a style="font-size: 10px;">账号或密码错误</a>
+					<a style="font-size: 10px;"></a>
 				</div>
 				
 				<div id= "btnOKdiv" style="height: 50px;">

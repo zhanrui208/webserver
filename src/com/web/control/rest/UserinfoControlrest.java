@@ -6,9 +6,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -32,9 +34,9 @@ public class UserinfoControlrest extends BaseController {
 	 * @param remember
 	 * @return
 	 */
-	@RequestMapping(value = "/dologin")
 	@ResponseBody
-	public Object checklogin(HttpServletRequest req,
+	@RequestMapping(value = "/dologin",produces = {"application/json;charset=UTF-8"},method=RequestMethod.POST)
+	public String checklogin(HttpServletRequest req,
 			HttpServletResponse response, String username, String password,
 			@RequestParam(defaultValue="0") String remember) {
 		Map<String, Object> map = initMessage();
@@ -47,12 +49,11 @@ public class UserinfoControlrest extends BaseController {
 				if (remember.equals("1")) {// 记住密码参数
 					SessionManager.setUserCookie(req, response, userinfo, true);
 				}
-
 			}
 		} catch (Exception e) {
 			processError(map, e);
 		}
-		return SUCCESSJson(map);
+		return SUCCESS(map);
 	}
 	
 
@@ -65,18 +66,23 @@ public class UserinfoControlrest extends BaseController {
 	 * @return
 	 */
 	@ResponseBody  
-	@RequestMapping(value = "/doregedit")
-	public String checkregedit(Userinfo userinfo) {
+	@RequestMapping(value = "/doregedit",produces = {"application/json;charset=UTF-8"},method=RequestMethod.POST)
+	public String checkregedit(HttpServletRequest res,Userinfo userinfo,String token) {
 		Map<String, Object> map = initMessage();
 		try {
+			String sessiontoken =SessionManager.getSession(res, "token");
+			if (!token.equals(sessiontoken)){
+				map.put("error", "不能重复提交");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			SessionManager.removeSession(res,"toekn");
 			userinfoServer.regedit(userinfo, map);
 		} catch (Exception e) {
 			processError(map, e);
 		}
 		return SUCCESS(map);
 	}
-
-
 	
 	/**
 	 * 修改密码

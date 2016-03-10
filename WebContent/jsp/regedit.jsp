@@ -11,7 +11,7 @@
    <link href="css/foot.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
     <script type="text/javascript" src="js/regedit.js"  ></script>
-   <script type="text/javascript" src="js/home.js"  ></script>
+   <script type="text/javascript" src="js/public.js"  ></script>
 </head>
 <body>
 	<div id = "main">
@@ -23,8 +23,8 @@
 		<div id = main_body>
 			<div id = btnregedit>
 				<div class="regeditTitle"><div class="regedit-inner" id="regedit-inner">注册帐号</div></div>
-				<form action="rest/doregedit" onsubmit="return toVaild()" method="post" >
-					<input type ="hidden" value = ${token} >
+				<form id ="saveDataForm" action="rest/doregedit" onsubmit="return saveFormData()" method="post" >
+					<input type ="hidden" id="token" value = ${token} >
 				
 					<div class ="user regedit">
 						<label class="infolable" id="accout_lable">账号</label>
@@ -78,9 +78,9 @@
 					</div>						
 
 
-					<div class ="submit_div regedit">
+					<div class ="submit_div regedit"  onclick="doregedit()">
 						<div class="submit_box">
-							<input class="submit_btn" type="submit"  value="提交注册"  tabindex="6" id="submit">
+							<input class="submit_btn" type="button"  value="提交注册"  tabindex="6" id="submit">
 						</div>
 					</div>						
 				</form>

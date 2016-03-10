@@ -1,8 +1,7 @@
-/**
- * 验证输入是否符合要求
- * @returns {Boolean}
- */
-function toVaild(){
+
+
+function doregedit() {  
+	
 	var username = $("#user").val();
 	var password = $("#password").val();
 	var password_again = $("#password_again").val();
@@ -39,6 +38,48 @@ function toVaild(){
 		alert("手机号不能为空");
 		return false;
 	}
+	var token=$("#token").val();
+		
+		
 	
-	return true;
+	$.ajax({
+		url : 'rest/doregedit',
+		type : 'POST',
+		datatype : 'JSON',
+		data : {
+			'UserName' : username,
+			'Password' : password,
+			'EMail' : email,
+			'Mobile' : phone,
+			'token' : token
+		}
+	}).done(function(data) {
+	  if(data['success']){
+		  if (data['errorCode']==100){
+			  alert("注册成功!");
+			  window.location="login";
+		  }else {
+//			  alert(data['error']);
+		  }
+	  }
+	  else{
+		  alert("注册失败!");
+	  }
+	}).fail(function(err) {
+		alert("服务器响应失败!");
+	});	
+}  
+
+
+
+/**
+ * 验证输入是否符合要求
+ * @returns {Boolean}
+ */
+function getToken(){
+	var input=$("input");  
+    $.each(input,function(index,a){  
+        alert(a.value);  
+        return a.value;
+    });  
 }

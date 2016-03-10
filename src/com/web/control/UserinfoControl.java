@@ -24,7 +24,9 @@ public class UserinfoControl {
 	}
 	
 	@RequestMapping(value ="/regedit")
-	public String regedit(Userinfo userinfo){
+	public String regedit(HttpServletRequest res){
+		String token = System.currentTimeMillis()+"";
+		SessionManager.saveSession(res, "token",token);
 		return "regedit";
 	}
 

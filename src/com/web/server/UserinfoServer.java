@@ -34,7 +34,9 @@ public class UserinfoServer {
 				System.out.println("密码验证成功！");
 				map.put("success", true);
 			} else {
-				map.put("success", false);
+				map.put("success", true);
+				map.put("error", "用户名或密码错误！");
+				map.put("errorCode", "601");
 			}
 		} catch (Exception e) {
 			map.put("success", false);
