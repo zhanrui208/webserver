@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+
+/** 头 */
+  #menu_head{
+    background: #fff;	
+    width:100%;
+  	margin: auto auto auto auto;
+  	height:90px;
+    }
+ 
+	 	/** 图标 */
+	   #menu_logo{
+	    background: #fff;
+	    padding: 15px 0;	
+	    width:25%;
+	    float:left;
+	    height:100%;
+	    }
+		#logo img {
+	  		width: 200px;
+		}
+	  
+
+	 	/** 菜单 */
+	   #menu_context{
+	    	background: #fff;
+	    	padding: 15px 0;	
+	    	width:75%;
+	    	float:right;
+	    	height:100%;
+	    }
+	    
+	    	#detail_menu{
+	 	  		float: left;
+	  			width: 60%;
+	  			float:left;
+	 		}
+	 		
+	 		#loginfor_menu{
+	 	  		float: right;
+	  			width: 30%;
+	  			float:right;
+	 		}
+	 
+	 		.navbar-nav > li {
+	  			float: left;
+			}
+			
+			.nav > li > a {
+	  			position: relative;
+	  			display: block;
+	  			padding: 10px 15px;
+	    		font-size: 18px;
+  				color: black;
+			}
+	
+		/** 菜单 */

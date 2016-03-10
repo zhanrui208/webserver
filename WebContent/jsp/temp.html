@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Home - 千鸿通信</title>
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+   <style type="text/css">
+   
+     /** 标签公共  */
+	  body{
+	  	width :100%;
+	  	height:100%;
+	  	font: 14px;
+	  	font-weight: normal;
+	  	font-style: normal;
+	  	color: #727272;
+	  	}
+  
+	  a {
+	  	color: #fc4242;
+	  	text-decoration: none;
+		}
+		
+	 p {
+	  	font: 15px 'Open Sans', sans-serif;
+	  	font-weight: normal;
+	  	line-height: 23px;	
+		}
+	
+	ul li {
+	 	list-style: none;
+		}
+	
+	#main{
+	 	padding:20px 30px;
+		}
+ /** 标签公共  */		
+   
+   
+   
+   /** 头 */
+  #main_head{
+    background: #fff;	
+    width:100%;
+  	margin: auto auto auto auto;
+  	height:90px;
+    }
+ 
+	 	/** 图标 */
+	   #main_logo{
+	    background: #fff;
+	    padding: 15px 0;	
+	    width:25%;
+	    float:left;
+	    height:100%;
+	    }
+		#logo img {
+	  		width: 200px;
+		}
+	  
+
+	 	/** 菜单 */
+	   #main_menu{
+	    	background: #fff;
+	    	padding: 15px 0;	
+	    	width:75%;
+	    	float:right;
+	    	height:100%;
+	    }
+	    
+	    	#detail_menu{
+	 	  		float: left;
+	  			width: 60%;
+	  			float:left;
+	 		}
+	 		
+	 		#loginfor_menu{
+	 	  		float: right;
+	  			width: 30%;
+	  			float:right;
+	 		}
+	 
+	 		.navbar-nav > li {
+	  			float: left;
+			}
+			
+			.nav > li > a {
+	  			position: relative;
+	  			display: block;
+	  			padding: 10px 15px;
+	  			font-size: 24px;
+			}
+	
+		/** 菜单 */
+		
+#main_foot{
+ 	position: relative;
+ 	color: #505050;
+ 	height:100px;
+ 	margin-top:20px;
+   }
+   
+ #basefoot{
+ 	height:40px;
+ 	font-size: 20px;
+ 	text-align:center;/** 居中*/
+ }  
+      
+ #copyright{
+ 	height:40px;
+ 	font-size: 18px;
+ 	text-align:center; /** 居中*/
+ }  
+		
+   
+   
+   </style>
+</head>
+<body>
+	<div id = "main">
+		<!-- 头部分 -->
+		<div id = "main_head">
+			<!-- logo -->
+			<div id = "main_logo" >
+				<a id="logo" href="home" title="Agora" rel="home">
+					<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
+				</a>
+			</div>
+			<!-- logo -->
+			<!-- menu -->
+			<div id ="main_menu">
+				<div id="detail_menu" class="navbar-collapse collapse">
+					<ul id="primary-menu" class="nav navbar-nav">
+						<li id="menu-item-product" class="menu-item-detail"><a href="http://cn.agora.io/products/">首页</a></li>
+						<li id="menu-item-method" class="menu-item-detail"><a href="http://cn.agora.io/solutions/">视频会议</a></li>
+						<li id="menu-item-price" class="menu-item-detail"><a href="http://cn.agora.io/pricing/">路演</a></li>
+						<li id="menu-item-develop" class="menu-item-detail"><a href="http://cn.agora.io/developer/">关于</a></li>
+						<!--
+						<li class="menu-item-login" class ="menu-item-detail"><a href="javascript:void(0);">登录</a></li>
+						<li class="menu-item-regeter" class ="menu-item-detail"><a href="javascript:void(0);">注册</a></li>
+						-->
+					</ul>
+				</div>
+				
+				<div id="loginfor_menu" class="navbar-collapse collapse">
+					<ul id="primary-menu" class="nav navbar-nav">
+						<li class="menu-item-login" class ="menu-item-detail"><a href="javascript:void(0);">登录</a></li>
+						<li class="menu-item-regeter" class ="menu-item-detail"><a href="javascript:void(0);">注册</a></li>
+					</ul>
+				</div>
+				
+			</div>	
+			<!-- menu -->	
+		</div>	
+		<!-- 头部分 -->
+		
+		<!-- 主体部分 -->
+		<div id = main_body>
+			<div id = btnlogin>
+				<div id ="login_image_div">
+					<a id ="login_image_a">
+						<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
+					</a>
+					
+				</div>
+				<div class = "centerClass">
+					<a class="desName">账号  :</a> <input id = "name"  type ="text" class="input-control" >
+				</div>
+				<div class = "centerClass">
+						<a class="desName">密码  :</a>
+						<input id = "password" type ="password" class="input-control">
+						<a class="forgetpass" href="http://qhongmeet.com/forgetPass/" style="color: blue;font-size: 10px"> 忘记密码？</a>
+				</div>
+				<div id="login_msg_div">
+					<a style="font-size: 10px;">账号或密码错误</a>
+				</div>
+				
+				<div id= "btnOKdiv" style="height: 50px;">
+					<button id ="btnOK" value="">登陆</button>	
+				</div>
+			</div>
+		</div>	
+		<!-- 主题部分 -->	
+
+		
+		
+		<!-- 最下面基本介绍部分 -->
+    	<div id = main_foot>
+		    <div id ="basefoot"> 
+				<a href="http://www.quanshi.com/about/contact/">联系我们</a> 
+				<span>|</span> 
+				<a href="http://www.quanshi.com/terms/" rel="nofollow">使用条款</a> 
+				<span>|</span> 
+				<a href="http://www.quanshi.com/privacy/" rel="nofollow">隐私条款</a>
+				<span>|</span>
+				<a href="http://www.quanshi.com/sitemap/">网站地图</a> 
+				<span>|</span>
+				<a href="http://www.quanshi.com/news/home.html ">媒体新闻</a> 
+				<span>|</span>
+				<a href="http://www.quanshi.com/about/company/">公司简介</a>
+			</div>
+		    <div id="copyright">
+				<a href="http://www.quanshi.com/">
+				<font color="#000000">全时云商务服务股份有限公司</font>
+				</a> Copyright © 2015 京ICP备08005473号
+			</div>
+		</div>		
+		<!-- 最下面基本介绍部分 -->
+	</div>		
+</body>
+</html>

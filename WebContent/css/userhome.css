@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+#main {
+	width: 1024px;
+	background: white;
+}
+
+#main_head {
+	height: 55px;
+	width: 100%;
+	position: relative;
+	clear: both;
+}
+
+#main_logo {
+	width: 20%;
+	height: 100%;
+	float: left;
+	background: dodgerblue;
+}
+
+#username_div {
+	width: 150px;
+	float: right;
+	height: 100%;
+	line-height: 50px;
+}
+
+#userlogout_div {
+	width: 100px;
+	float: right;
+	height: 100%;
+	line-height: 50px;
+}
+
+/** 第一部分*/
+
+#main_body{
+	height: 600px;
+	width:100%;
+	clear: both;
+}
+
+#part1{
+	height:100%;
+	width:20%;
+	float:left;
+	background: dodgerblue;
+}
+
+#part11{
+	height: 60px;
+	line-height: 60px;
+	margin-left: 40px;
+}
+
+#part2{
+	height:600px;
+	width:80%;
+	float:right;
+	height: 600px;
+	background: powderblue;
+}
+		
+
+
+
+/** 第二部分*/
+#part21 {
+	height: 600px;
+	margin: 5px 25px;
+	padding: 1px 10px
+}
+
+#part21_head_div {
+	height: 40px;
+	line-height: 40px;
+	background: lightskyblue;
+}
+
+#refreshmeet_div {
+	width: 100px;
+	float: right;
+}
+
+#createmeet_div {
+	width: 100px;
+	float: right;
+}
+
+#part22 {
+	background: blue;
+	height: 40px;
+	line-height: 40px;
+	font-size: 12px;
+}
+
+
+
+/**第三部分 **/
+#part23 {
+	height: 40px;
+	line-height: 40px;
+	background: white;
+	font-size: 14px;
+}
+
+.col {
+	height: 40px;
+	width: 16%;
+	float: left;
+}
+
+

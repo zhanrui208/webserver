@@ -1,0 +1,96 @@
+@CHARSET "UTF-8";
+
+
+  /** 标签公共  */
+  body{
+  	width:1024px;
+  	margin:0 auto;
+  	/** width :100%; */
+  	height:100%;
+  	font: 14px;
+  	font-weight: normal;
+  	font-style: normal;
+  	/**  color: #727272;*/
+  	}
+ 
+  a {
+  	/** color: #fc4242;*/
+  	text-decoration: none;
+	}
+	
+ p {
+  	font: 15px 'Open Sans', sans-serif;
+  	font-weight: normal;
+  	line-height: 23px;	
+	}
+
+ul li {
+ 	list-style: none;
+	}
+
+#main{
+ 	padding:20px 30px;
+	}
+ /** 标签公共  */		
+
+
+	#main_body{
+		height: 375px;		
+		position: relative;
+	}
+	
+	#login_image_div{
+		height: 70px;
+		margin: 0 auto 0 auto;
+		position: relative;
+		text-align: center;
+	}
+	#login_image_a img{
+		width: 100px;
+				height: 35px;
+	}
+	
+	#btnlogin{
+	  padding: 25px;
+	  margin: 0 auto 0 auto;
+	  width: 400px;
+	  background-color: aqua;
+	  margin-top: 60px;
+	}
+	#login{		
+		height:120px;
+	}
+	.centerClass{
+		width:400px;
+		height:40px;
+		font-size: 20px;
+		padding-top: 7px;
+		margin-left: 50px;
+	}
+	.desName{
+		color: black;
+	}
+		
+	.input-control{
+		margin: 2px 4px 2px 4px;
+		height:22px;
+	}
+	
+	
+	#login_msg_div{
+		height: 10px;
+		color: red;
+		margin-left: 150px;
+		
+	}
+	#btnOKdiv{
+
+		 
+	}
+	#btnOK{
+		margin-left: 130px;
+		margin-top: 20px;
+		width: 150px;
+		height: 32px;
+		
+	}

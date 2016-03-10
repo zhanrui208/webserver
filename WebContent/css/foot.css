@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+  #main_foot{
+  	position: relative;
+  	color: #505050;
+  	height:50px;
+  	margin-top:20px;
+  	bottom: 0px;
+    }
+    
+  #basefoot{
+  	height:40px;
+  	font-size: 20px;
+  	text-align:center;/** 居中*/
+  }  
+    
+  #copyright{
+  	height:40px;
+  	font-size: 18px;
+  	text-align:center; /** 居中*/
+  }     
+   

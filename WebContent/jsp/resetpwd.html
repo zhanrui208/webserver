@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>千鸿通信</title>
+  <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
+   <link href="css/login.css" rel="stylesheet" type="text/css"/>
+   <link href="css/head.css" rel="stylesheet" type="text/css"/>
+   <link href="css/foot.css" rel="stylesheet" type="text/css"/>
+   <script type="text/javascript" src="/webtest/js/home.js"  ></script>
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+  	<style type ="text/css"	>
+
+		  
+body {
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  font: 14px;
+  font-weight: normal;
+  font-style: normal;
+}
+
+		#main_body{
+			position: relative;
+			 height: 400px;
+		}
+		
+		#btnregedit{
+		  	width: 600px;
+  			margin: 0 auto 0 auto; 
+  			padding-top: 20px;
+  			height: 100%;
+		}
+
+		 #haoma-inner{
+			font-size: 20px;
+  			text-align: center;
+		  }
+		  
+		  #haomaTitle{
+		  	height: 50px;
+		  }
+		  
+		  #info_form{
+		  	width:600px;
+		  	height: 300px;
+		  }
+		  .info_div{
+		  		width:600px;
+		  		height:50px;
+		  		line-height: 50px;
+  				overflow: hidden;
+		  }
+		  .infolable{
+				float: left;
+ 			 	width: 20%;
+  				height: 100%;
+  				font-size: 20px;
+  				text-align: right;
+  				 line-height: 50px;
+  				overflow: hidden;
+		  	}
+		  	
+		  .ipt_box{
+		  		float: left;
+		  		width:50%;
+		  		height:50px;
+		  		line-height: 50px;
+  				overflow: hidden;
+		  	}	
+		  .ipt_info{
+		  	  height: 30px;
+		  	  margin-left: 15px;
+		  	    width: 240px;
+		  }	
+		  	
+		  	
+		  .errinfo{
+		  		float: left;
+		  		width:30%;
+		  		height:50px;
+		  		 line-height: 50px;
+  				overflow: hidden;
+		  	}	
+	
+	
+		.submit{
+		  background: #69b946;
+ 			 display: inline-block;
+		  height: 52px;
+		  width: 306px;
+		  text-align: center;
+		  cursor: pointer;
+		  font: 22px/52px "微软雅黑";
+		  color: #fff;
+		  -webkit-border-radius: 3px;
+		  -moz-border-radius: 3px;
+		  border-radius: 3px;
+		  border-style: solid;
+		  border-width: 1px;
+		  border-color: transparent;
+		  }
+		  #submit_div{
+		    margin-left: 130px;
+		      margin-top: 25px;
+		  }
+			  				  				
+	</style>
+</head>
+<body>
+	<div id = "main">
+		<!-- 头部分 -->
+		
+		<!-- 头部分 -->
+		
+		<!-- 主体部分 -->
+		<div id = main_body>
+			<div id = btnregedit>
+				<div id="haomaTitle"><div class="haoma-inner" id="haoma-inner">重置密码</div></div>
+				<form id="info_form" action="regedit" method="post" >
+				
+
+
+					<div id ="user_div" class="info_div">
+						<label class="infolable" id="accout_lable">账号</label>
+						<div class="ipt_box">
+							<input type="text" class="ipt_info" id="user" name="user" tabindex="1" style="z-index:0" maxlength="24" >
+						</div>
+						<div class="errinfo">
+							<a>账号不能为空</a>
+						</div>	
+					</div>
+		
+					<div id ="password_div" class="info_div">
+						<label class="infolable" id="password_lable">旧密码</label>
+						<div class="ipt_box">
+							<input type="oldpassword" class="ipt_info" id="oldpassword" name="oldpassword" tabindex="2" style="z-index:0" maxlength="16" >
+						</div>
+						<div class="errinfo">
+							<a>密码不能为空</a>
+						</div>	
+					</div>
+					
+					<div id ="newpassword_div" class="info_div">
+						<label class="infolable" id="password_again_lable">新密码</label>
+						<div class="ipt_box">
+							<input type="newpassword" class="ipt_info" id="newpassword" name="newpassword" tabindex="3" style="z-index:0" maxlength="16" >
+						</div>
+						<div class="errinfo">
+							<a>密码不能为空</a>
+						</div>	
+					</div>	
+								
+					<div id ="newpassword_again_div" class="info_div">
+						<label class="infolable" id="email_lable">确认新密码</label>
+						<div class="ipt_box">
+							<input type="text" class="ipt_info" id="newpassword_again" name="newpassword_again" tabindex="4" style="z-index:0" maxlength="40" >
+						</div>
+						<div class="errinfo">
+							<a>邮箱不能为空</a>
+						</div>	
+					</div>		
+
+
+					<div id ="submit_div" class="info_div">
+						<div class="ipt_box">
+							<input class="submit" type="submit" value="提交注册" title="提交注册" tabindex="23" id="submit">
+						</div>
+					</div>						
+				</form>				
+		<!-- 主题部分 -->	
+		
+		<!-- 最下面基本介绍部分 -->
+		
+		<!-- 最下面基本介绍部分 -->
+	</div>		
+</body>
+</html>

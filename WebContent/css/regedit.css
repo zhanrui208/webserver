@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+/** 标签公共  */
+body {
+	width: 1024px;
+	margin: 0 auto;
+	/** width :100%; */
+	height: 100%;
+	font: 14px;
+	font-weight: normal;
+	font-style: normal;
+	/**  color: #727272;*/
+}
+
+a {
+	/** color: #fc4242;*/
+	text-decoration: none;
+}
+
+p {
+	font: 15px 'Open Sans', sans-serif;
+	font-weight: normal;
+	line-height: 23px;
+}
+
+ul li {
+	list-style: none;
+}
+
+#main {
+	padding: 20px 30px;
+}
+/** 标签公共  */
+
+/** 内容部分*/
+#main_body {
+	position: relative;
+	height: 450px;
+}
+
+#btnregedit {
+	width: 600px;
+	margin: 0 auto 0 auto;
+	padding-top: 20px;
+	height: 100%;
+}
+
+.regeditTitle {
+	height: 60px;
+	font-size: 20px;
+	text-align: center;
+}
+
+#info_form {
+	width: 600px;
+	height: 300px;
+}
+
+.info_div {
+	width: 600px;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.regedit {
+	height: 50px;
+}
+
+.infolable {
+	float: left;
+	width: 20%;
+	height: 100%;
+	font-size: 20px;
+	text-align: right;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.ipt_box {
+	float: left;
+	width: 50%;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.new_info {
+	height: 25px;
+	margin: 10px 20px;
+	width: 80%;
+}
+
+.ipt_info {
+	height: 30px;
+	margin-left: 15px;
+	width: 240px;
+}
+
+.errinfo {
+	float: left;
+	width: 30%;
+	height: 50px;
+	line-height: 50px;
+	overflow: hidden;
+}
+
+.submit_btn {
+	background: #69b946;
+	display: inline-block;
+	height: 50px;
+	width: 250px;
+	text-align: center;
+	cursor: pointer;
+	font: 22px/52px "微软雅黑";
+	color: #fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: transparent;
+	line-height: 50px;
+}
+
+.submit_box {
+	margin-left: 130px;
+	margin-top: 25px;
+}
+/** 内容部分*/
