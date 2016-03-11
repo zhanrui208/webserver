@@ -27,6 +27,7 @@ public class UserinfoControlrest extends BaseController {
 
 	/**
 	 * 默认不记住密码
+	 * 
 	 * @param req
 	 * @param response
 	 * @param username
@@ -35,17 +36,16 @@ public class UserinfoControlrest extends BaseController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/dologin",produces = {"application/json;charset=UTF-8"},method=RequestMethod.POST)
+	@RequestMapping(value = "/dologin", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String checklogin(HttpServletRequest req,
 			HttpServletResponse response, String username, String password,
-			@RequestParam(defaultValue="0") String remember) {
+			@RequestParam(defaultValue = "0") String remember) {
 		Map<String, Object> map = initMessage();
 		try {
 			userinfoServer.login(username, password, map);
 			if ((boolean) map.get("success")) {
 				Userinfo userinfo = userinfoServer.getUserinfo(username);
-				SessionManager.saveUserSession(req,
-						userinfo.getUserID() + "");
+				SessionManager.saveUserSession(req, userinfo.getUserID() + "");
 				if (remember.equals("1")) {// 记住密码参数
 					SessionManager.setUserCookie(req, response, userinfo, true);
 				}
@@ -55,9 +55,6 @@ public class UserinfoControlrest extends BaseController {
 		}
 		return SUCCESS(map);
 	}
-	
-
-	
 
 	/**
 	 * 注册
@@ -65,25 +62,26 @@ public class UserinfoControlrest extends BaseController {
 	 * @param userinfo
 	 * @return
 	 */
-	@ResponseBody  
-	@RequestMapping(value = "/doregedit",produces = {"application/json;charset=UTF-8"},method=RequestMethod.POST)
-	public String checkregedit(HttpServletRequest res,Userinfo userinfo,String token) {
+	@ResponseBody
+	@RequestMapping(value = "/doregedit", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public String checkregedit(HttpServletRequest res, Userinfo userinfo,
+			String token) {
 		Map<String, Object> map = initMessage();
 		try {
-			String sessiontoken =SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)){
+			String sessiontoken = SessionManager.getSession(res, "token");
+			if (!token.equals(sessiontoken)) {
 				map.put("error", "不能重复提交");
 				map.put("errorCode", 500);
 				return SUCCESS(map);
 			}
-			SessionManager.removeSession(res,"toekn");
+			SessionManager.removeSession(res, "toekn");
 			userinfoServer.regedit(userinfo, map);
 		} catch (Exception e) {
 			processError(map, e);
 		}
 		return SUCCESS(map);
 	}
-	
+
 	/**
 	 * 修改密码
 	 * 
@@ -92,21 +90,52 @@ public class UserinfoControlrest extends BaseController {
 	 * @param newpassword
 	 * @return
 	 */
-	@RequestMapping(value = "/doresetpwd")
-	public String doresetPwd(String username, String oldpassword,
-			String newpassword) {
+	@ResponseBody
+	@RequestMapping(value = "/doresetpwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public String doresetPwd(HttpServletRequest res, String username,
+			String oldpassword, String newpassword, String token) {
 		Map<String, Object> map = initMessage();
-		userinfoServer.resetpwd(username, oldpassword, newpassword, map);
-		return "doresetpwd";
+		try {
+			String sessiontoken = SessionManager.getSession(res, "token");
+			if (!token.equals(sessiontoken)) {
+				map.put("error", "不能重复提交");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			SessionManager.removeSession(res, "toekn");
+			userinfoServer.resetpwd(username, oldpassword, newpassword, map);
+		} catch (Exception e) {
+			processError(map, e);
+		}
+		return SUCCESS(map);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/doforgetpwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public String doforgetpwd(HttpServletRequest res, String username,
+			String email, String token) {
+		Map<String, Object> map = initMessage();
+		try {
+			String sessiontoken = SessionManager.getSession(res, "token");
+			if (!token.equals(sessiontoken)) {
+				map.put("error", "不能重复提交");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			SessionManager.removeSession(res, "toekn");
+			userinfoServer.forgetpwd(username, email, map);
+		} catch (Exception e) {
+			processError(map, e);
+		}
+		return SUCCESS(map);
 	}
 
 	@RequestMapping(value = "/doupuserinfo")
 	public String doupuserinfo() {
 		return "doregedit";
 	}
-	
-	
-	@ResponseBody 
+
+	@ResponseBody
 	@RequestMapping(value = "/checkuser")
 	public Object checkUser(String username) {
 		Map<String, Object> map = initMessage();
@@ -118,5 +147,4 @@ public class UserinfoControlrest extends BaseController {
 		return SUCCESSJson(map);
 	}
 
-	
 }

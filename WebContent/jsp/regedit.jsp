@@ -23,7 +23,7 @@
 		<div id = main_body>
 			<div id = btnregedit>
 				<div class="regeditTitle"><div class="regedit-inner" id="regedit-inner">注册帐号</div></div>
-				<form id ="saveDataForm" action="rest/doregedit" onsubmit="return saveFormData()" method="post" >
+				<form id ="saveDataForm" >
 					<input type ="hidden" id="token" value = ${token} >
 				
 					<div class ="user regedit">

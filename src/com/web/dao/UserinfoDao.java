@@ -102,6 +102,27 @@ public class UserinfoDao extends CommonDao{
 		return isTrue;
 	}
 	
+	/**
+	 * 验证用户名和邮箱是否匹配
+	 * @param UserName
+	 * @param Email
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean checkEmail(String UserName,String Email) throws Exception{
+		boolean isTrue = false;
+		String sql =" select 1 from " +  m_TableName + " where UserName = ? and EMail=? ";
+		Object params[] =  new Object[2];
+		params[0]=UserName;
+		params[1]=Email;
+		 List<Map<String,Object>> list=query(sql, params);
+		 if  (list!=null && list.size()>0){
+			 isTrue=true;
+		 }
+		return isTrue;
+	}
+	
+	
 	
 
 	/**
@@ -163,11 +184,11 @@ public class UserinfoDao extends CommonDao{
 	}
 	
 	
-	public boolean updatePwd(String username,String oldpassword,String newpassword){
+	public boolean updatePwd(String username,String newpassword){
 		boolean isTrue = false;
 		try {
-			String sql =" update " +  m_TableName + " set Password = ? where UserName = ? and Password=? ";
-			String params[]={username,oldpassword,newpassword};
+			String sql =" update " +  m_TableName + " set Password = ? where UserName = ?";
+			String params[]={newpassword,username};
 			int count = execute(sql, params);
 			if (count >0){
 				isTrue=true;

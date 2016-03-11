@@ -21,9 +21,10 @@ import com.web.model.Userinfo;
 public class UserinfoServer {
 	@Autowired
 	UserinfoDao userinfoDao;
-	
+
 	/**
 	 * 登陆
+	 * 
 	 * @param UserName
 	 * @param Password
 	 * @param map
@@ -43,9 +44,10 @@ public class UserinfoServer {
 			map.put("err", "服务器内部错误");
 		}
 	}
-	
+
 	/**
 	 * 注册
+	 * 
 	 * @param UserName
 	 * @param Password
 	 * @param map
@@ -63,36 +65,64 @@ public class UserinfoServer {
 			map.put("err", "服务器内部错误");
 		}
 	}
-	
+
 	/**
 	 * 修改密码
+	 * 
 	 * @param userName
 	 * @param oldpassword
 	 * @param newpassword
 	 * @param map
 	 */
-	public void resetpwd(String userName, String oldpassword,String newpassword,Map<String, Object> map) {
+	public void resetpwd(String userName, String oldpassword,
+			String newpassword, Map<String, Object> map) {
 		try {
 			if (userinfoDao.checkPwd(userName, oldpassword)) {
-				if (userinfoDao.updatePwd(userName, oldpassword, newpassword)){
+				if (userinfoDao.updatePwd(userName, newpassword)) {
 					map.put("success", true);
-				}else{
-					map.put("success", false);
-					map.put("err", "更新密码失败！");
+				} else {
+					map.put("error", "修改密码失败！");
+					map.put("errorCode", 502);
 				}
 			} else {
-				map.put("success", true);
-				map.put("err", "原密码错误");
+				map.put("error", "原密码错误");
+				map.put("errorCode", 502);
 			}
 		} catch (Exception e) {
-			map.put("success", true);
-			map.put("err", "服务器内部错误");
+			map.put("error", "服务器内部错误");
+			map.put("errorCode", 502);
 		}
 	}
-	
-	
-	
-	
+
+	public void forgetpwd(String userName, String emai, Map<String, Object> map) {
+		try {
+			if (userinfoDao.checkEmail(userName, emai)) {
+				String emais[] = new String[] { emai };
+				String newpassword = RandomGenerator.genRandomCharNum(8);
+				String title = "重置密码";
+
+				if (userinfoDao.updatePwd(userName, newpassword)) {
+					newpassword = "新密码为："+newpassword;
+					if (sendEmail(emais, title, newpassword)) {
+						map.put("success", true);
+					} else {
+						map.put("error", "重置密码失败！");
+						map.put("errorCode", 502);
+					}
+				} else {
+					map.put("error", "重置密码失败！");
+					map.put("errorCode", 502);
+				}
+
+			} else {
+				map.put("error", "账号邮箱不匹配");
+				map.put("errorCode", 502);
+			}
+		} catch (Exception e) {
+			map.put("error", "服务器内部错误");
+			map.put("errorCode", 502);
+		}
+	}
 
 	/**
 	 * 发送电子邮件
@@ -101,7 +131,7 @@ public class UserinfoServer {
 	 * @param Title
 	 * @param context
 	 */
-	public void sendEmail(String toEmails[], String Title, String context) {
+	private boolean sendEmail(String toEmails[], String Title, String context) {
 		IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou",
 				"Ob71Glm5tvs3cnzC", "jMn5zNU5bRCNh0Agk2pQm1Z6N4SuG9");
 		IAcsClient client = new DefaultAcsClient(profile);
@@ -125,61 +155,65 @@ public class UserinfoServer {
 			request.setHtmlBody(context);
 			SingleSendMailResponse httpResponse = client
 					.getAcsResponse(request);
-
+			if (httpResponse.getRequestId() != null) {
+				return true;
+			}
 		} catch (ServerException e) {
 			e.printStackTrace();
 		} catch (ClientException e) {
 			e.printStackTrace();
 		}
 		System.out.println("OK");
+		return false;
 	}
-	
-	
-	public Userinfo getUserinfo(String username){
-		Userinfo userinfo  = new Userinfo();
+
+	public Userinfo getUserinfo(String username) {
+		Userinfo userinfo = new Userinfo();
 		try {
-			userinfo= userinfoDao.geSingleUserbyusername(username);
+			userinfo = userinfoDao.geSingleUserbyusername(username);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return userinfo;
 	}
-	
-	
+
 	/**
 	 * 验证是否已经有该用户名
+	 * 
 	 * @param username
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
-	public void checkUser(String username,Map<String, Object> map) throws Exception{
-		if (userinfoDao.checkUserName(username)){
+	public void checkUser(String username, Map<String, Object> map)
+			throws Exception {
+		if (userinfoDao.checkUserName(username)) {
 			map.put("error", "该用户名已注册！");
 			map.put("errorCode", 301);
-		}else{
+		} else {
 			map.put("error", "");
 		}
 	}
-	
+
 	/**
 	 * 加密算法
+	 * 
 	 * @param username
 	 * @param password
 	 * @return
 	 */
-	private String encodepassword(String username,String password){
-		String pass = username+password;
+	private String encodepassword(String username, String password) {
+		String pass = username + password;
 		return pass;
 	}
-	
+
 	/**
 	 * 自动产生一个固定长度的数字密码
+	 * 
 	 * @param len
 	 */
-	private String autocreatepwd(int len){
+	private String autocreatepwd(int len) {
 		return RandomGenerator.genRandomNum(len);
 	}
-	
 
 }

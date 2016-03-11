@@ -26,12 +26,14 @@ public class UserinfoControl {
 	@RequestMapping(value ="/regedit")
 	public String regedit(HttpServletRequest res){
 		String token = System.currentTimeMillis()+"";
-		SessionManager.saveSession(res, "token",token);
+		SessionManager.saveSession(res, "token","reg"+token);
 		return "regedit";
 	}
 
 	@RequestMapping(value ="/resetpwd")
-	public String resetPwd(){
+	public String resetPwd(HttpServletRequest res){
+		String token = System.currentTimeMillis()+"";
+		SessionManager.saveSession(res, "token","repwd"+token);
 		return "resetpwd";
 	}
 	
@@ -48,5 +50,12 @@ public class UserinfoControl {
 		return "userhome";
 	}
 	
+	
+	@RequestMapping(value ="/forgetpwd")
+	public String forgetpwd(HttpServletRequest res){
+		String token = System.currentTimeMillis()+"";
+		SessionManager.saveSession(res, "token","forgetpwd"+token);
+		return "forgetpwd";
+	}
 
 }
