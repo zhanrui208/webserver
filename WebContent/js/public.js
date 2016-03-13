@@ -119,6 +119,14 @@ function IsZIP(str) {
 	}
 }
 
+//校验手机号码：必须以数字开头，除数字外，可含有“-”
+function isMobil(str)   
+{   
+	var patrn=/^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$/;   
+	if (!patrn.exec(str)) return false 
+	return true ;
+}   
+
 // 判断输入的数字不大于某个特定的数字
 function MaxValue(str) {
 //	var val = document.getElementById('str').value.trim();
@@ -132,6 +140,19 @@ function MaxValue(str) {
 		}
 	}
 }
+
+function isPwd(str){
+	if (str==null ||str==""){
+		alert("新密码不能为空");
+		return false;
+	}
+	if (str.length<6 && str.length<24){
+		alert("密码长度必须大于5位小于24位");
+		return false;
+	}
+	return true ;
+}
+
 
 Phone: /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/
 Mobile: /^((\(\d{2,3}\))|(\d{3}\-))?13\d{9}$/

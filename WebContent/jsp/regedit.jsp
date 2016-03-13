@@ -25,7 +25,7 @@
 				<div class="regeditTitle"><div class="regedit-inner" id="regedit-inner">注册帐号</div></div>
 				<form id ="saveDataForm" >
 					<input type ="hidden" id="token" value = ${token} >
-				
+					<!--  
 					<div class ="user regedit">
 						<label class="infolable" id="accout_lable">账号</label>
 						<div class="ipt_box">
@@ -35,14 +35,24 @@
 							<a>账号不能为空</a>
 						</div>	
 					</div>
-		
+					-->
+					<div class ="email regedit">
+						<label class="infolable" id="email_lable">注册邮箱</label>
+						<div class="ipt_box">
+							<input type="text" class="new_info" id="email" name="EMail" tabindex="1" style="z-index:0" maxlength="40" >
+						</div>
+						<div class="errinfo">
+							<a class ="a_red">*</a>
+						</div>	
+					</div>	
+					
 					<div class ="password regedit">
 						<label class="infolable" id="password_lable">密码</label>
 						<div class="ipt_box">
 							<input type="password" class="new_info" id="password" name="Password" tabindex="2" style="z-index:0" maxlength="16" >
 						</div>
 						<div class="errinfo">
-							<a>密码不能为空</a>
+							<a class ="a_red">*</a>
 						</div>	
 					</div>
 					
@@ -52,20 +62,9 @@
 							<input type="password" class="new_info" id="password_again" name="password_again" tabindex="3" style="z-index:0" maxlength="16" >
 						</div>
 						<div class="errinfo">
-							<a>密码不能为空</a>
+							<a class ="a_red">*</a>
 						</div>	
 					</div>	
-								
-					<div class ="email regedit">
-						<label class="infolable" id="email_lable">邮箱</label>
-						<div class="ipt_box">
-							<input type="text" class="new_info" id="email" name="EMail" tabindex="4" style="z-index:0" maxlength="40" >
-						</div>
-						<div class="errinfo">
-							<a>邮箱不能为空</a>
-						</div>	
-					</div>		
-	
 	
 					<div class ="phone regedit">
 						<label class="infolable" id="phone_lable">电话</label>
@@ -73,7 +72,7 @@
 							<input id="phone" type="text" class="new_info" name="Mobile" tabindex="5"  maxlength="11">
 						</div>
 						<div class="errinfo">
-							<a>电话不能为空</a>
+							<a class ="a_red">*</a>
 						</div>	
 					</div>						
 
@@ -82,7 +81,8 @@
 						<div class="submit_box">
 							<input class="submit_btn" type="button"  value="提交注册"  tabindex="6" id="submit">
 						</div>
-					</div>						
+					</div>	
+										
 				</form>
 			</div>
 		</div>						

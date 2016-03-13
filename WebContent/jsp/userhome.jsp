@@ -49,7 +49,7 @@
 
 			<!-- 第一部分 :左边侧边菜单栏-->
 			<div id ="part1">
-				<div id ="part11" >
+				<div id ="part11" class ="part_type">
 					<!-- 会议室部分-->
 					<a>会议室      ></a>
 					<!-- 图片部分 -->

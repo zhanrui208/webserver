@@ -38,6 +38,11 @@ ul li {
 	height: 450px;
 }
 
+.a_red{
+	color: red;
+}
+
+
 #btnregedit {
 	width: 600px;
 	margin: 0 auto 0 auto;

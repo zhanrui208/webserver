@@ -35,7 +35,7 @@
 				<div class = "centerClass">
 						<a class="desName">密码  :</a>
 						<input id = "password" type ="password" class="input-control">
-						<a class="forgetpass" href="http://qhongmeet.com/forgetPass/" style="color: blue;font-size: 10px"> 忘记密码？</a>
+						<a class="forgetpass" href="forgetpwd" style="color: blue;font-size: 10px"> 忘记密码？</a>
 				</div>
 				<div id="login_msg_div">
 					<a style="font-size: 10px;"></a>

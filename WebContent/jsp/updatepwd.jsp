@@ -6,11 +6,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>千鸿通信</title>
   <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
-  <link href="css/resetpwd.css" rel="stylesheet" type="text/css"/>
+  <link href="css/updatepwd.css" rel="stylesheet" type="text/css"/>
   <link href="css/head.css" rel="stylesheet" type="text/css"/>
   <link href="css/foot.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
-  <script type="text/javascript" src="js/forgetpwd.js"  ></script>
+  <script type="text/javascript" src="js/updatepwd.js"  ></script>
   <script type="text/javascript" src="js/public.js"  ></script>
 </head>
 <body>
@@ -23,15 +23,29 @@
 		<div id = main_body>
 			<div id = btnregedit>
 				<div id="haomaTitle">
-					<div class="haoma-inner" id="haoma-inner">邮箱重置密码</div>
+					<div class="haoma-inner" id="haoma-inner">重置密码</div>
 				</div>
 				<form id="info_form"  >
 					<input type ="hidden" id="token" value = ${token} >
-		
-					<div class ="email forgetpwd">
-						<label class="infolable" id="email_lable">邮箱</label>
+					<input type ="hidden" id="username" value = ${username} >
+					<div id ="newpassword_div" class="info_div updatepwd ">
+						<label class="infolable" id="password_again_lable">账号：${username}</label>
+					</div>
+					
+					<div id ="newpassword_div" class="info_div updatepwd ">
+						<label class="infolable" id="password_again_lable">新密码</label>
 						<div class="ipt_box">
-							<input type="text" class="new_info" id="email"  tabindex="2" style="z-index:0" maxlength="40" >
+							<input type="newpassword" class="new_info" id="newpassword" name="newpassword" tabindex="3" style="z-index:0" maxlength="16" >
+						</div>
+						<div class="errinfo">
+							<a>密码不能为空</a>
+						</div>	
+					</div>	
+								
+					<div id ="newpassword_again_div" class="info_div updatepwd ">
+						<label class="infolable" id="email_lable">确认新密码</label>
+						<div class="ipt_box">
+							<input type="text" class="new_info" id="newpassword_again" name="newpassword_again" tabindex="4" style="z-index:0" maxlength="40" >
 						</div>
 						<div class="errinfo">
 							<a>邮箱不能为空</a>
@@ -39,9 +53,9 @@
 					</div>		
 
 
-					<div class ="submit_div resetpwd"  onclick="forgetpwd()">
+					<div class ="submit_div resetpwd"  onclick="updatepwd()">
 						<div class="submit_box">
-							<input class="submit_btn" type="button"  value="确认重置密码"  tabindex="3" id="submit">
+							<input class="submit_btn" type="button"  value="确认修改"  tabindex="5" id="submit">
 						</div>
 					</div>						
 				</form>	

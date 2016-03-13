@@ -2,7 +2,9 @@ package com.web.control;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.web.server.mainServer;
 
@@ -28,10 +30,24 @@ public class mainControl {
 	}
 	
 
+	@RequestMapping(value ="/test")
+	protected String handleRequestInternal() throws Exception { 
+		ModelAndView model = new ModelAndView(); 
+		model.addObject("msg", "hello world"); 
+		return "test"; 
+	} 
 	
+	@RequestMapping(value ="/test1")
+	protected String handleRequestInternal1(ModelMap model) throws Exception { 
+		model.addAttribute("msg", "hello world"); 
+		return "test"; 
+	} 
 	
-	public  String sendMailto(){
-//		String res= mainserver.sendmainto();
-		return "";
-	}
+	@RequestMapping(value ="/test2")
+	protected String handleRequestInternal2(ModelAndView model) throws Exception { 
+		model.addObject("msg", "hello world"); 
+		return "test"; 
+	} 
+	
+
 }

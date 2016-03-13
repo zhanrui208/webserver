@@ -9,11 +9,14 @@ import org.springframework.stereotype.Repository;
 import sun.util.logging.resources.logging;
 
 import com.web.model.Userinfo;
+import com.web.model.Userregedit;
 
 @Repository
 public class UserinfoDao extends CommonDao{
 	
 	private static String m_TableName="t_userinfo";
+	private static String m_ReTableName="t_userregedit";
+	
 	
 	public List<Userinfo> getUserList() throws Exception{
 		String sql =" select * from " +  m_TableName ;
@@ -96,7 +99,7 @@ public class UserinfoDao extends CommonDao{
 		boolean isTrue = false;
 		String sql =" select 1 from " +  m_TableName + " where UserName = ? ";
 		 List<Map<String,Object>> list=query(sql, new Object[]{UserName});
-		 if  (!org.springframework.util.StringUtils.isEmpty(list)){
+		 if  (list!=null && list.size()>0){
 			 isTrue=true;
 		 }
 		return isTrue;
@@ -152,6 +155,48 @@ public class UserinfoDao extends CommonDao{
 		}
 		return isTrue;
 	}
+	
+	
+	/**
+	 **创建用户数据
+	 * @param userinfo
+	 * @return
+	 */
+	public boolean creUserregedit(Userregedit userregedit){
+		boolean isTrue = false;
+		try {
+			int count = createBean(userregedit,m_ReTableName);
+			if (count >0){
+				isTrue=true;
+			} 
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return isTrue;
+	}
+	
+	/**
+	 * 获取注册的数据
+	 * @param username
+	 * @param randomNum
+	 * @return
+	 */
+	public Userregedit getregedit(String username,String randomNum){
+		boolean isTrue = false;
+		try {
+			String sql =" select * from " +  m_ReTableName + " where UserName = ? and RandomNum=? ";
+			List<Userregedit> userreglist = queryBeans(sql, Userregedit.class,new Object[]{username,randomNum});
+			if (userreglist!=null && userreglist.size()>0){
+				return userreglist.get(0);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	
 	
 	public boolean updateUserinfo(Userinfo userinfo,String whereSql,String whereParams[] ){

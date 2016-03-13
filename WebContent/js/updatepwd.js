@@ -4,26 +4,14 @@
 /**
  * 重新设置密码
  */
-function resetpwd() {
-	var username = $("#user").val();
-	var oldpassword = $("#oldpassword").val();
+function updatepwd() {
+	var username = $("#username").val();
 	var newpassword = $("#newpassword").val();
 	var newpassword_again = $("#newpassword_again").val();
+	var token=$("#token").val();
 	
-
-	if (username==null ||username==""){
-		alert("账号不能为空");
-		return false;
-	}
-	
-	if (oldpassword==null ||oldpassword==""){
-		alert("旧密码不能为空");
-		return false;
-	}
-	
-	if (newpassword==null ||newpassword==""){
-		alert("新密码不能为空");
-		return false;
+	if (!isPwd(newpassword)){
+		return;
 	}
 	
 	if (newpassword_again!=newpassword){
@@ -31,18 +19,13 @@ function resetpwd() {
 		return false;
 	}
 
-	var token=$("#token").val();
-		
-		
-	
 	$.ajax({
-		url : 'rest/doresetpwd',
+		url : 'rest/updatepwd',
 		type : 'POST',
 		datatype : 'JSON',
 		data : {
 			'username' : username,
-			'oldpassword' : oldpassword,
-			'newpassword' : newpassword,
+			'password' : newpassword,
 			'token' : token
 		}
 	}).done(function(data) {
@@ -55,7 +38,7 @@ function resetpwd() {
 		  }
 	  }
 	  else{
-		  alert("更新密码失败!");
+		  alert("注册失败!");
 	  }
 	}).fail(function(err) {
 		alert("服务器响应失败!");

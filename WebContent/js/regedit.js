@@ -2,7 +2,7 @@
 
 function doregedit() {  
 	
-	var username = $("#user").val();
+	var username = $("#email").val();
 	var password = $("#password").val();
 	var password_again = $("#password_again").val();
 	var email = $("#email").val();
@@ -13,29 +13,23 @@ function doregedit() {
 		return false;
 	}
 	
-	if (password==null ||password==""){
-		alert("密码不能为空");
-		return false;
+	if (!isPwd(newpassword)){
+		return;
 	}
-	
+
 	if (password_again!=password){
 		alert("2次输入的密码不相等");
 		return false;
 	}
 	
-	if (email==null ||email==""){
-		alert("邮箱不能为空");
-		return false;
-	}
 	
 	if (!IsEmail(email)){
 		alert("邮箱格式不正确");
 		return false;
 	}
 	
-	
-	if (phone==null ||phone==""){
-		alert("手机号不能为空");
+	if (!isMobil(phone)){
+		alert("手机号格式错误");
 		return false;
 	}
 	var token=$("#token").val();
@@ -59,7 +53,7 @@ function doregedit() {
 			  alert("注册成功!");
 			  window.location="login";
 		  }else {
-//			  alert(data['error']);
+			  alert(data['error']);
 		  }
 	  }
 	  else{
