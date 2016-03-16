@@ -3,36 +3,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-   <title>千鸿通信</title>
-   <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
-   <link href="css/videomeet.css" rel="stylesheet" type="text/css"/>
-   <link href="css/head.css" rel="stylesheet" type="text/css"/>
-   <link href="css/foot.css" rel="stylesheet" type="text/css"/>
-   <link href="css/userhome.css" rel="stylesheet" type="text/css"/>
-   <script type="text/javascript" src="js/home.js"  ></script>
-   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
-  </script>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   	<title>千鸿通信</title>
+   	<link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
+   
+    <link href="css/userhome.css" rel="stylesheet" type="text/css"/>
+   	<link href="css/public.css" rel="stylesheet" type="text/css"/>
+   
+  	<script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
+  	<script type="text/javascript" src="js/userhome.js"  ></script>
 </head>
 <body>
-	<div id = "main">
-		<!-- 头部分 -->
-		<%@ include file="head.jsp"%> 
-		<!-- 头部分 -->
-		
-		
+	<div id = "main">		
 		<!-- 头部分 -->
 		<div id = "main_head">
 			<!-- logo -->
 			<div id = "main_logo" >
 				<a id="logo" href="home" title="Agora" rel="home">
-					<img src="image\LOGO.png" alt="加载图片失败">
+					<img style="padding-top: 5px;" src="image\LOGO.png" alt="加载图片失败">
 				</a>
 			</div>
 
 			<!-- 退出按钮 -->
 			<div id ="userlogout_div">
-				<a id ="userlogout_btn">退出</a>
+				<a id ="userlogout_btn"  href="logout">退出</a>
 			</div>
 						
 			<!-- 显示名字 -->
@@ -49,9 +43,9 @@
 
 			<!-- 第一部分 :左边侧边菜单栏-->
 			<div id ="part1">
-				<div id ="part11" class ="part_type">
+				<div id ="part11" class ="part_type" href="mymeeting">
 					<!-- 会议室部分-->
-					<a>会议室      ></a>
+					<a class="C_menu_a">会议室      ></a>
 					<!-- 图片部分 -->
 				</div>
 			</div>	
@@ -89,7 +83,7 @@
 							<a class="paytype">付费方式</a>
 						</div>
 						<div id="manage_div" class="col col6">
-							<a class="manage">管理</a>
+							<a class="manage">操作</a>
 						</div>																	
 					</div>
 					<!-- 标题 -->

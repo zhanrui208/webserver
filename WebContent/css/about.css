@@ -1,58 +1,31 @@
 @CHARSET "UTF-8";
- /** 标签公共  */
-	  body{
-	    width:1024px;
-  		margin:0 auto;
-	  	/** width :100%; */
-	  	height:100%;
-	  	font: 14px;
-	  	font-weight: normal;
-	  	font-style: normal;
-	  	}
-  
-	  a {
-	  	text-decoration: none;
-		}
-		
-	 p {
-	  	font: 15px 'Open Sans', sans-serif;
-	  	font-weight: normal;
-	  	line-height: 23px;	
-		}
-	
-	ul li {
-	 	list-style: none;
-		}
-	
-	#main{
-	 	padding:20px 30px;
-		}
- /** 标签公共  */		
-	
-	
-		
-  /** body */
-  #main_body{
-    background: #fff;
-    height: 100%;
-    }
-    
-    #part10{
-    	height: 100%;
-    	}
-    #part11_picture{
-    	width : 100%;
-    	height :100%;
-    }
-    
-    .ms-picture img{
-    	width: 100%; 
-    	margin-top: 0px; 
-    }
-    
-    
-    /**/
-    .part20_context{
-    	font-size: 20px;
-  		line-height: 150%;
-    }
+
+/** body */
+#main {
+	padding: 20px 30px;
+}
+
+#main_body {
+	background: #fff;
+	height: 100%;
+}
+
+#part10 {
+	height: 100%;
+}
+
+#part11_picture {
+	width: 100%;
+	height: 100%;
+}
+
+.ms-picture img {
+	width: 100%;
+	margin-top: 0px;
+}
+
+/**/
+.part20_context {
+	font-size: 20px;
+	line-height: 150%;
+}

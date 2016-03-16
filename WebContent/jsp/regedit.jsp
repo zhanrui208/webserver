@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>千鸿通信</title>
   <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
+  	<link href="css/public.css" rel="stylesheet" type="text/css"/>
    <link href="css/regedit.css" rel="stylesheet" type="text/css"/>
    <link href="css/head.css" rel="stylesheet" type="text/css"/>
    <link href="css/foot.css" rel="stylesheet" type="text/css"/>

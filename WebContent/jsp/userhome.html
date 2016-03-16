@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
   <meta charset="UTF-8">
   <title>千鸿通信</title>
+      <link href="D:\Java\xiangmu\webserver\WebContent\css\userhome.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\Java\xiangmu\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
   <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
 </head>
@@ -36,15 +38,32 @@
 
 			<!-- 第一部分 :左边侧边菜单栏-->
 			<div id ="part1">
+			<!--  
 				<div id ="part11" >
-					<!-- 会议室部分-->
 					<a>会议室      ></a>
-					<!-- 图片部分 -->
 				</div>
+			-->		
+				<ul  id ="part11">
+					<li href="11" id ="ccc" onmouseover="show()" onmouseout="this.style.background=''">
+						<a href="">会议室      ></a>
+					</li>
+					<li onmouseover="this.style.background='#666666'" onmouseout="this.style.background=''">
+						<a>会议室 2     ></a>
+					</li>
+				</ul>
 			</div>	
 			<!-- 第一部分 -->
-			
-			
+			<script type="text/javascript">
+				function show(){
+					document.getElementById("ccc").style.background='#666666';
+					document.getElementById("ccc").style.cursor="hand";
+				}
+				function close(){
+					alert("222");
+					document.getElementById("s1").style.background='';
+				}			
+			</script>
+				
 			<!-- 第二部分-->
 			<div id ="part2" class="part2_main_public">
 				<div id =part21>
