@@ -82,7 +82,7 @@ public class UserinfoServer {
 
 		if (userinfoDao.checkUserName(user)) {
 			map.put("success", false);
-			map.put("error", "该链接已激活");
+			map.put("error", "该链接账号已激活");
 			map.put("errorCode", 500);
 			return;
 		}
@@ -98,7 +98,8 @@ public class UserinfoServer {
 		String datatime = userregedit.getCreatedate();
 		Date dtime = df.parse(datatime);
 		Userinfo userinfo = new Userinfo();
-		if (System.currentTimeMillis() - dtime.getTime() <= 2 * 60 * 60 * 1000) {
+		//2天超时
+		if (System.currentTimeMillis() - dtime.getTime() <= 2 * 24 * 60 * 60 * 1000) {
 			userinfo.setUserName(userregedit.getUserName());
 			userinfo.setPassword(userregedit.getPassword());
 			userinfo.setEMail(userregedit.getEMail());
@@ -182,7 +183,7 @@ public class UserinfoServer {
 
 			String context = activateUrl + "?randomNum=" + randomNum + "&user="
 					+ username;
-
+			context ="请单击该链接进行密码重置："+context;
 			if (sendEmail(emais, title, context)) {
 				map.put("success", true);
 			} else {
@@ -204,14 +205,14 @@ public class UserinfoServer {
 
 		// 激活链接
 		String activateUrl = Constant.ACTIVEURL;
-		String title = "重置密码";
+		String title = "激活账号链接";
 
 		byte[] usernameByte = user.getBytes(Constant.UTF_8);
 		String username = Coder.encryptBASE64(usernameByte);
 
 		String context = activateUrl + "?randomNum=" + randomNum + "&username="
 				+ username;
-
+		context ="请单击该链接激活账号："+context;
 		if (sendEmail(emais, title, context)) {
 			map.put("success", true);
 		} else {

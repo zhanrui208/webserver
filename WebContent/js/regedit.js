@@ -13,7 +13,7 @@ function doregedit() {
 		return false;
 	}
 	
-	if (!isPwd(newpassword)){
+	if (!isPwd(password)){
 		return;
 	}
 

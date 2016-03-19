@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id = "main">
-		<p id="info">${error}</p>
+		<p id="info">${info}</p>
 	</div>	
 	<script type="text/javascript">
 		var height=window.innerHeight ;

@@ -16,7 +16,7 @@ public class CoderTest {
     @Test
     public void test() throws Exception {
     	
-        String inputStr = "简单加密";
+        String inputStr = "admin";
         System.err.println("原文:\n" + inputStr);
  
         byte[] inputData = inputStr.getBytes();

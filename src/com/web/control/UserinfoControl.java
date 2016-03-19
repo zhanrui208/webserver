@@ -83,24 +83,25 @@ public class UserinfoControl extends BaseController{
 			username = new String(userbyte, Constant.UTF_8);
 			userinfoServer.activateUser(username, randomNum, map);
 			if ((boolean) map.get("success")){
-				String token = System.currentTimeMillis()+RandomGenerator.genRandomChar(8);
-				
+//				String token = System.currentTimeMillis()+RandomGenerator.genRandomChar(8);
+//				
 				Map<String,Object> modelMap = new HashMap<String,Object>();
-				SessionManager.saveSession(req, "token", token);
-				modelMap.put("username", username);
-				modelMap.put("token", token);
+//				SessionManager.saveSession(req, "token", token);
+//				modelMap.put("username", username);
+//				modelMap.put("token", token);
+				modelMap.put("info","已成功激活该账号，请登录！");
 				model.addAllAttributes(modelMap);
 				
-				return "updatepwd";
+				return "activeInfo";
 			}else{
 				model.addAllAttributes(map);
-				return "activeErr";
+				return "activeInfo";
 			}
 			
 		} catch (Exception e) {
 			processError(map, e);
 			model.addAllAttributes(map);
-			return "activeErr";
+			return "activeInfo";
 		}
 	}
 
