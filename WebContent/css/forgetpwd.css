@@ -5,41 +5,40 @@
 	padding: 20px 30px;
 }
 
+#speheight{
+	height: 40px;
+}
+
 #main_body {
 	position: relative;
-	height: 400px;
+	height: 360px;
 }
 
 #btnregedit {
 	width: 600px;
 	margin: 0 auto 0 auto;
-	padding-top: 20px;
 	height: 100%;
+	background: powderblue;
 }
 
-#haoma-inner {
-	font-size: 20px;
-	text-align: center;
-}
 
 #haomaTitle {
-	height: 50px;
+	height: 60px;
+	
+}
+#haoma-inner {
+	font-size: 26px;
+	text-align: center;
+	line-height: 60px;
 }
 
-#info_form {
+#info_div {
 	width: 600px;
 	height: 300px;
 }
 
-.info_div {
-	width: 600px;
-	height: 50px;
-	line-height: 50px;
-	overflow: hidden;
-}
-
-.forgetpwd {
-	height: 50px;
+#forgetpwd_div{
+  margin-top: 20px;
 }
 
 .infolable {
@@ -52,12 +51,34 @@
 	overflow: hidden;
 }
 
-.ipt_box {
-	float: left;
-	width: 50%;
+#descript_div{
 	height: 50px;
-	line-height: 50px;
-	overflow: hidden;
+  	text-align: center;
+  	line-height: 50px;
+  	font-size: 13px;
+}
+
+#email_div{
+	  height: 50px;
+}
+
+#code_div{
+	 height: 50px;
+}
+
+#ipt_email {
+	width: 50%;
+	height: 25px;
+	/** overflow: hidden;**/
+}
+#ipt_code {
+	width: 30%;
+	height: 25px;
+
+}
+
+#sendcode_btn{
+	height: 30px;
 }
 
 .new_info {
@@ -66,19 +87,12 @@
 	width: 80%;
 }
 
-.errinfo {
-	float: left;
-	width: 30%;
-	height: 50px;
-	line-height: 50px;
-	overflow: hidden;
-}
 
 .submit_btn {
 	background: #69b946;
 	display: inline-block;
 	height: 52px;
-	width: 260px;
+	width: 100%;
 	text-align: center;
 	cursor: pointer;
 	font: 22px/52px "微软雅黑";
@@ -92,6 +106,15 @@
 }
 
 .submit_box {
-	margin-left: 130px;
-	margin-top: 25px;
+	margin: 45px auto;
+	width :260px;
 }
+
+/** 尾部分 **/
+ #main_foot{
+  	position: absolute;
+  	height:50px;
+  	margin:20px auto;
+  	bottom: 0px;
+  	width: 964px;
+ }

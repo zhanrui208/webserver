@@ -89,3 +89,16 @@
 	margin-top: -180px;
 }
 /** 内容第二部分*/
+
+
+
+
+
+/** 尾部分 **/
+ #main_foot{
+  	position: relative;
+  	height:50px;
+  	margin:20px auto;
+  	bottom: 0px;
+  	width: 964px;
+ }

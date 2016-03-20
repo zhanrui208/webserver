@@ -221,6 +221,22 @@ public class UserinfoServer {
 		}
 	}
 
+	public void sendCode(String emai, String code,Map<String, Object> map){
+		String emais[] = new String[] { emai };
+
+		// 激活链接
+		String title = "激活验证码";
+
+		String context ="验证码为：【"+code +"】,2分钟内有效";;
+		if (sendEmail(emais, title, context)) {
+			map.put("success", true);
+		} else {
+			map.put("error", "发送邮箱雁激活失败！");
+			map.put("errorCode", 502);
+		}
+	}
+	
+	
 	/**
 	 * 发送电子邮件
 	 * 

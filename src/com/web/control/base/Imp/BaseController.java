@@ -3,11 +3,14 @@ package com.web.control.base.Imp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONObject;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.ContextLoader;
 
+import com.web.base.session.SessionManager;
 import com.web.common.base.Imp.Base;
 import com.web.control.base.IBaseController;
 
@@ -100,6 +103,32 @@ public class BaseController extends Base implements IBaseController{
 		map.put("success",false);
 		map.put("error",error);
 		map.put("errorCode", errorCode);
+	}
+	
+	
+	
+	public void saveToken(HttpServletRequest res){
+		String token = System.currentTimeMillis()+"";
+		SessionManager.saveSession(res, "token",token);
+	}
+	
+	/**
+	 * 验证验证码
+	 * @param res
+	 * @param token
+	 * @return
+	 */
+	public boolean checkToken(HttpServletRequest res,String token){
+		String sessiontoken = SessionManager.getSession(res, "token");
+		return token.equals(sessiontoken);
+	}
+	
+	/**
+	 * 清楚token
+	 * @param res
+	 */
+	public void clearToken(HttpServletRequest res){
+		SessionManager.removeSession(res, "token");
 	}
 	
 }

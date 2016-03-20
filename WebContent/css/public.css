@@ -2,13 +2,13 @@
   /** 标签公共  */
   body{
   	width:1024px;
-  	margin:0 auto;
+  	margin:20px auto;
   	/** width :100%; */
   	height:100%;
   	font: 14px;
   	font-weight: normal;
   	font-style: normal;
-  	/**  color: #727272;*/
+  	BACKGROUND-COLOR: #E0DFD6;
   	}
  
   a {

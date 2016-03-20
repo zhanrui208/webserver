@@ -126,3 +126,13 @@
 .col1{
 	text-align: center;
 }
+
+
+/** 尾部分 **/
+ #main_foot{
+  	position: absolute;
+  	height:50px;
+  	margin:20px auto;
+  	bottom: 0px;
+  	width: 964px;
+ }

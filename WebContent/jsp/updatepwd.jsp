@@ -20,17 +20,22 @@
 		<%@ include file="head.jsp"%> 
 		<!-- 头部分 -->
 		
+		<div id ="speheight"></div>
+		
 		<!-- 主体部分 -->
 		<div id = main_body>
 			<div id = btnregedit>
 				<div id="haomaTitle">
 					<div class="haoma-inner" id="haoma-inner">重置密码</div>
 				</div>
-				<form id="info_form"  >
+				<div id="info_div"  >
 					<input type ="hidden" id="token" value = ${token} >
 					<input type ="hidden" id="username" value = ${username} >
 					<div id ="newpassword_div" class="info_div updatepwd ">
-						<label class="infolable" id="password_again_lable">账号：${username}</label>
+						<label class="infolable" id="password_again_lable">账号</label>
+						<div  class="ipt_box">
+							<a class="new_info">${username}</a>
+						</div>
 					</div>
 					
 					<div id ="newpassword_div" class="info_div updatepwd ">
@@ -39,7 +44,7 @@
 							<input type="newpassword" class="new_info" id="newpassword" name="newpassword" tabindex="3" style="z-index:0" maxlength="16" >
 						</div>
 						<div class="errinfo">
-							<a>密码不能为空</a>
+							<a></a>
 						</div>	
 					</div>	
 								
@@ -49,7 +54,7 @@
 							<input type="text" class="new_info" id="newpassword_again" name="newpassword_again" tabindex="4" style="z-index:0" maxlength="40" >
 						</div>
 						<div class="errinfo">
-							<a>邮箱不能为空</a>
+							<a></a>
 						</div>	
 					</div>		
 
@@ -59,7 +64,7 @@
 							<input class="submit_btn" type="button"  value="确认修改"  tabindex="5" id="submit">
 						</div>
 					</div>						
-				</form>	
+				</div>	
 			</div>
 		</div>								
 		<!-- 主题部分 -->	

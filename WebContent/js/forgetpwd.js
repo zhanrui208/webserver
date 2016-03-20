@@ -1,35 +1,69 @@
 /**
  * 
  */
+function sendcode(){
+	var username= $("#ipt_email").val();
+	var token= $("#token").val();
+	$.ajax({
+		url : 'rest/sendcode',
+		type : 'POST',
+		datatype : 'JSON',
+		data : {
+			'username' : username,
+			'token' : token
+		}
+	}).done(function(data) {
+	  if(data['success']){
+		  if (data['errorCode']==100){
+			  alert("验证码已发送到你的邮箱!");
+		  }else {
+			  alert(data['error']);
+		  }
+	  }
+	  else{
+		  alert("发送验证码失败!");
+	  }
+	}).fail(function(err) {
+		alert("发送验证码失败!");
+	});	
+	
+};
+
+
+
+
 /**
  * 重新设置密码
  */
 function forgetpwd() {
 
-	var username = $("#email").val();
-	var email= $("#email").val();
+	var email= $("#ipt_email").val();
+	var code= $("#ipt_code").val();
+	var token= $("#token").val();
 	
 	if (!IsEmail(email)){
 		alert("邮箱格式不正确");
 		return false;
 	}
 
-	var token=$("#token").val();
-		
+	if (code ==null ||code.length == 0) {
+		alert("验证码不能为空式");
+		return false;
+	}
+
 	$.ajax({
 		url : 'rest/doforgetpwd',
 		type : 'POST',
 		datatype : 'JSON',
 		data : {
-			'username' : username,
-			'email' : email,
-			'token' : token
+			'username' : email,
+			'token' : token,
+			'code'  : code
 		}
 	}).done(function(data) {
 	  if(data['success']){
 		  if (data['errorCode']==100){
-			  alert("更新密码的链接已发送到你的邮箱!");
-			  window.location="login";
+			  location.href = data.data;
 		  }else {
 			  alert(data['error']);
 		  }

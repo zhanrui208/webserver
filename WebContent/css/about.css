@@ -10,6 +10,11 @@
 	height: 100%;
 }
 
+
+#part20{
+	margin: 0 20px;
+}
+
 #part10 {
 	height: 100%;
 }
@@ -29,3 +34,14 @@
 	font-size: 20px;
 	line-height: 150%;
 }
+
+
+
+/** 尾部分 **/
+ #main_foot{
+  	position: relative;
+  	height:50px;
+  	margin:20px auto;
+  	bottom: 0px;
+  	width: 964px;
+ }
