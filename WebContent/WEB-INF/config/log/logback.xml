@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="webserver"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+        <encoding>UTF-8</encoding>
+        <File>${catalina.base}/logs/webserver.log</File>
+        <encoder>
+            <pattern>[%d{yyy-MM-dd HH:mm:ss}] %m [%c]%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>30</maxIndex>
+            <FileNamePattern>${catalina.base}/logs/webserver.log.%i
+            </FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <appender name="cosole" class="ch.qos.logback.core.ConsoleAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender -->
+        <encoding>UTF-8</encoding>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{yyy-MM-dd HH:mm:ss}] %m [%c]%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.web" level="info">
+        <appender-ref ref="webserver" />
+    </logger>
+    <root level="info">
+        <appender-ref ref="cosole" />
+        <appender-ref ref="webserver" />
+    </root>
+</configuration>

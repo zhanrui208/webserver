@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.ContextLoader;
 
@@ -17,7 +19,7 @@ import com.web.control.base.IBaseController;
 
 
 public class BaseController extends Base implements IBaseController{
-
+	Logger logger =LoggerFactory.getLogger("com.web.control.base.Imp.BaseController");
 	public Map<String,Object> initMessage(){
 		
 		Map<String,Object> map = new LinkedHashMap<String,Object>();
@@ -120,6 +122,7 @@ public class BaseController extends Base implements IBaseController{
 	 */
 	public boolean checkToken(HttpServletRequest res,String token){
 		String sessiontoken = SessionManager.getSession(res, "token");
+		logger.info("checkToken:" +token);
 		return token.equals(sessiontoken);
 	}
 	

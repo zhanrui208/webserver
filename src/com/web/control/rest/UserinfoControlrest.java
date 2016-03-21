@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ import com.web.server.UserinfoServer;
 @Controller
 @RequestMapping("/rest")
 public class UserinfoControlrest extends BaseController {
+	Logger logger =LoggerFactory.getLogger("com.web.control.rest.UserinfoControlrest");
+	
 	@Autowired
 	UserinfoServer userinfoServer;
 
@@ -73,6 +77,8 @@ public class UserinfoControlrest extends BaseController {
 	@RequestMapping(value = "/doregedit", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String checkregedit(HttpServletRequest res, Userregedit userregedit,
 			String token) {
+		logger.info("doregedit:paramtoken:" +token);
+		logger.info("doregedit:sessiontoken:" +SessionManager.getSession(res, "token"));
 		Map<String, Object> map = initMessage();
 		try {
 			//验证token
@@ -149,6 +155,7 @@ public class UserinfoControlrest extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/doforgetpwd",produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String doforgetpwd(HttpServletRequest res,String username,String code,String token) {
+		
 		Map<String, Object> map = initMessage();
 		try {
 //			//验证token

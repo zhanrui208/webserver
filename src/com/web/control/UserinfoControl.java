@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import com.web.server.UserinfoServer;
 
 @Controller
 public class UserinfoControl extends BaseController{	
+	Logger logger =LoggerFactory.getLogger("com.web.control.rest.UserinfoControl");
 	
 	@Autowired
 	UserinfoServer userinfoServer;
@@ -38,6 +41,7 @@ public class UserinfoControl extends BaseController{
 	@RequestMapping(value ="/regedit")
 	public String regedit(HttpServletRequest res){
 		saveToken(res);
+		logger.info("regedit-token:" +SessionManager.getSession(res, "token"));
 		return "regedit";
 	}
 
@@ -73,6 +77,7 @@ public class UserinfoControl extends BaseController{
 	@RequestMapping(value ="/forgetpwd")
 	public String forgetpwd(HttpServletRequest res){
 		saveToken(res);
+		logger.info("forgetpwd-token:" +SessionManager.getSession(res, "token"));
 		return "forgetpwd";
 	}
 		
