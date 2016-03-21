@@ -1,11 +1,5 @@
 @CHARSET "UTF-8";
-  #main_foot{
-  	position: relative;
-  	color: #505050;
-  	height:50px;
-  	margin-top:20px;
-  	bottom: 0px;
-    }
+
     
   #basefoot{
   	height:40px;

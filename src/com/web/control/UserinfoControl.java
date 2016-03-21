@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -35,15 +37,13 @@ public class UserinfoControl extends BaseController{
 	
 	@RequestMapping(value ="/regedit")
 	public String regedit(HttpServletRequest res){
-		String token = System.currentTimeMillis()+"";
-		SessionManager.saveSession(res, "token","reg"+token);
+		saveToken(res);
 		return "regedit";
 	}
 
 	@RequestMapping(value ="/resetpwd")
 	public String resetPwd(HttpServletRequest res){
-		String token = System.currentTimeMillis()+"";
-		SessionManager.saveSession(res, "token","repwd"+token);
+		saveToken(res);
 		return "resetpwd";
 	}
 	
@@ -52,6 +52,11 @@ public class UserinfoControl extends BaseController{
 		return "upuserinfo";
 	}
 	
+	/**
+	 * 
+	 * @param res
+	 * @return
+	 */
 	@RequestMapping(value ="/userhome")
 	public String userhome(HttpServletRequest res){
 		String userid =SessionManager.getUserSession(res);
@@ -60,15 +65,17 @@ public class UserinfoControl extends BaseController{
 		return "userhome";
 	}
 	
-	
+	/**
+	 * 忘记密码，跳转到密码修改界面
+	 * @param res
+	 * @return
+	 */
 	@RequestMapping(value ="/forgetpwd")
 	public String forgetpwd(HttpServletRequest res){
-		String token = System.currentTimeMillis()+"";
-		SessionManager.saveSession(res, "token","forgetpwd"+token);
+		saveToken(res);
 		return "forgetpwd";
 	}
-	
-	
+		
 	/**
 	 * 邮箱激活页面
 	 * 
@@ -83,12 +90,7 @@ public class UserinfoControl extends BaseController{
 			username = new String(userbyte, Constant.UTF_8);
 			userinfoServer.activateUser(username, randomNum, map);
 			if ((boolean) map.get("success")){
-//				String token = System.currentTimeMillis()+RandomGenerator.genRandomChar(8);
-//				
 				Map<String,Object> modelMap = new HashMap<String,Object>();
-//				SessionManager.saveSession(req, "token", token);
-//				modelMap.put("username", username);
-//				modelMap.put("token", token);
 				modelMap.put("info","已成功激活该账号，请登录！");
 				model.addAllAttributes(modelMap);
 				
@@ -104,20 +106,32 @@ public class UserinfoControl extends BaseController{
 			return "activeInfo";
 		}
 	}
-
-//	@RequestMapping(value = "/updatepwd")
-//	public ModelAndView updatepwd(String error){
-//		Map<String, Object> map = initMessage();
-//		ModelAndView mov = new ModelAndView();
-//		map.put("error", error);
-//		mov.addAllObjects(map);
-//		mov.setViewName("updatepwd");
-//		return mov;
-//	}
-//	
-//	@RequestMapping(value = "/activeErr")
-//	public String activeErr(Model model){
-//		model.addAttribute("error", "你是个大坏蛋");
-//		return "redirect:updatepwd";
-//	}
+	@RequestMapping(value = "/updatepwd")
+	public ModelAndView UpdatePwd(HttpServletRequest res,String rand,String token) {
+		Map<String, Object> map = initMessage();
+		ModelAndView mov = new ModelAndView();
+		try {
+			//验证token
+			if (!checkToken(res,token)) {
+				map.put("error", "不能重复提交");
+				map.put("errorCode", 500);
+				mov.setViewName("errPage");
+			}			
+			String username = (String) res.getSession().getAttribute(rand);
+			res.getSession().setAttribute("username", username);
+			if (StringUtils.isEmpty(username)){
+				map.put("error", "修改密码超时");
+				map.put("errorCode", 500);
+				mov.setViewName("errPage");
+			}else{
+				mov.setViewName("updatepwd");
+				mov.addObject("username", username);
+			}
+			
+		} catch (Exception e) {
+			processError(map, e);
+		}
+		mov.addObject("data", map);
+		return mov;
+	}
 }

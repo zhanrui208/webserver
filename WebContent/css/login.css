@@ -26,7 +26,7 @@
 	padding: 25px;
 	margin: 0 auto 0 auto;
 	width: 400px;
-	background-color: aqua;
+	background-color: powderblue;
 	margin-top: 60px;
 }
 
@@ -67,3 +67,13 @@
 	width: 150px;
 	height: 32px;
 }
+
+
+/** 尾部分 **/
+ #main_foot{
+  	position: absolute;
+  	height:50px;
+  	margin:20px auto;
+  	bottom: 0px;
+  	width: 964px;
+ }

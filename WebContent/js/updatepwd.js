@@ -20,7 +20,7 @@ function updatepwd() {
 	}
 
 	$.ajax({
-		url : 'rest/updatepwd',
+		url : 'rest/doupdatepwd',
 		type : 'POST',
 		datatype : 'JSON',
 		data : {

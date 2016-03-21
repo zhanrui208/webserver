@@ -10,6 +10,7 @@ import org.omg.PortableServer.REQUEST_PROCESSING_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -74,8 +75,8 @@ public class UserinfoControlrest extends BaseController {
 			String token) {
 		Map<String, Object> map = initMessage();
 		try {
-			String sessiontoken = SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)) {
+			//验证token
+			if (!checkToken(res,token)) {
 				map.put("error", "不能重复提交");
 				map.put("errorCode", 500);
 				return SUCCESS(map);
@@ -83,7 +84,9 @@ public class UserinfoControlrest extends BaseController {
 
 			if (!userinfoServer.checkUser(userregedit.getUserName())) {
 				userinfoServer.regedit(userregedit, map);
-				SessionManager.removeSession(res, "toekn");
+				if ((boolean) map.get("success")){
+					clearToken(res);
+				}
 			} else {
 				map.put("error", "该用户名已被注册,请重新输入！");
 				map.put("errorCode", 500);
@@ -108,65 +111,23 @@ public class UserinfoControlrest extends BaseController {
 			String oldpassword, String newpassword, String token) {
 		Map<String, Object> map = initMessage();
 		try {
-			String sessiontoken = SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)) {
+			//验证token
+			if (!checkToken(res,token)) {
 				map.put("error", "不能重复提交");
 				map.put("errorCode", 500);
 				return SUCCESS(map);
 			}
 			SessionManager.removeSession(res, "toekn");
 			userinfoServer.resetpwd(username, oldpassword, newpassword, map);
+			if ((boolean) map.get("success")){
+				clearToken(res);
+			}
 		} catch (Exception e) {
 			processError(map, e);
 		}
 		return SUCCESS(map);
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/doupdatepwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-	public String doUpdatePwd(HttpServletRequest res, String username,
-			String password, String token) {
-		Map<String, Object> map = initMessage();
-		try {
-			String sessiontoken = SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)) {
-				map.put("error", "不能重复提交");
-				map.put("errorCode", 500);
-				return SUCCESS(map);
-			}
-			if (userinfoServer.updatepwd(username, password)){
-				SessionManager.removeSession(res, "token");
-			}else{
-				map.put("error", "更新密码失败");
-				map.put("errorCode", 500);
-				return SUCCESS(map);
-			}
-			
-		} catch (Exception e) {
-			processError(map, e);
-		}
-		return SUCCESS(map);
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/doforgetpwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-	public String doforgetpwd(HttpServletRequest res, String username,
-			String token) {
-		Map<String, Object> map = initMessage();
-		try {
-			String sessiontoken = SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)) {
-				map.put("error", "不能重复提交");
-				map.put("errorCode", 500);
-				return SUCCESS(map);
-			}
-			SessionManager.removeSession(res, "token");
-			userinfoServer.forgetpwd(username, username, map);
-		} catch (Exception e) {
-			processError(map, e);
-		}
-		return SUCCESS(map);
-	}
 
 	@RequestMapping(value = "/doupuserinfo")
 	public String doupuserinfo() {
@@ -178,13 +139,96 @@ public class UserinfoControlrest extends BaseController {
 	public Object checkUser(String username) {
 		Map<String, Object> map = initMessage();
 		try {
-			userinfoServer.checkUser(username, map);
+			userinfoServer.checkUser(username, map);	
 		} catch (Exception e) {
 			processError(map, e);
 		}
 		return SUCCESSJson(map);
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "/doforgetpwd",produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public String doforgetpwd(HttpServletRequest res,String username,String code,String token) {
+		Map<String, Object> map = initMessage();
+		try {
+//			//验证token
+//			if (!checkToken(res,token)) {
+//				map.put("error", "不能重复提交");
+//				map.put("errorCode", 500);
+//				return SUCCESS(map);
+//			}
+			
+			String usernameTemp = (String) res.getSession().getAttribute("username");
+			if (StringUtils.isEmpty(usernameTemp)){
+				map.put("error", "验证码已超时！");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			if (!usernameTemp.equals(username)){
+				map.put("error", "邮箱不匹配！");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+		
+			String checkcode = (String) res.getSession().getAttribute("code");
+			if (checkcode == null){
+				map.put("error", "验证码已超时！");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			
+			if (!code.equals(checkcode)){
+				map.put("error", "验证码错误！");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			String rand =RandomGenerator.genRandomNum(20);
+			res.getSession().setAttribute(rand, username);
+			map.put("data", "updatepwd?rand="+rand);
+			clearToken(res);	
+		} catch (Exception e) {
+			processError(map, e);
+		}
+		return SUCCESS(map);
+	}	
+	
+	@ResponseBody
+	@RequestMapping(value = "/sendcode", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public Object sendCode(HttpServletRequest res,String username,String token) {
+		Map<String, Object> map = initMessage();
+		try {
+			//验证token
+			if (!checkToken(res,token)) {
+				map.put("error", "不能重复提交");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			
+			if (!userinfoServer.checkUser(username)){
+				map.put("error", "用户不存在");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			
+			String code=RandomGenerator.genRandomNum(6);
+			res.getSession().setMaxInactiveInterval(2*60);//超时2分钟
+			res.getSession().setAttribute("code", code);
+			res.getSession().setAttribute("username", username);
+			
+			String email=username;
+			userinfoServer.sendCode(email,code,map);
+			if ((boolean) map.get("success")){
+				clearToken(res);
+			}else{
+				map.put("error", "修改密码失败");
+				map.put("errorCode", 500);
+			}
+		} catch (Exception e) {
+			processError(map, e);
+		}
+		return SUCCESS(map);
+	}	
+	
 
 	
 	/**
@@ -195,21 +239,35 @@ public class UserinfoControlrest extends BaseController {
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/updatepwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-	public Object updatePwd(HttpServletRequest res,String username,String password,String token) {
+	@RequestMapping(value = "/doupdatepwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public Object doUpdatePwd(HttpServletRequest res,String username,String password,String token) {
 		Map<String, Object> map = initMessage();
 		try {
-			String sessiontoken = SessionManager.getSession(res, "token");
-			if (!token.equals(sessiontoken)) {
-				map.put("error", "不能重复提交");
+//			//验证token
+//			if (!checkToken(res,token)) {
+//				map.put("error", "不能重复提交");
+//				map.put("errorCode", 500);
+//				return SUCCESS(map);
+//			}
+			String usernameTemp = (String) res.getSession().getAttribute("username");
+			if (StringUtils.isEmpty(username)){
+				map.put("error", "修改密码超时失败");
 				map.put("errorCode", 500);
 				return SUCCESS(map);
 			}
+			
+			if (!usernameTemp.equals(username)){
+				map.put("error", "用户名发生未知错误！");
+				map.put("errorCode", 500);
+				return SUCCESS(map);
+			}
+			
 			if (userinfoServer.updatepwd(username, password)){
-				SessionManager.removeSession(res, "token");
+				clearToken(res);
 			}else{
 				map.put("error", "修改密码失败");
 				map.put("errorCode", 500);
+				return SUCCESS(map);
 			}
 		} catch (Exception e) {
 			processError(map, e);
@@ -217,34 +275,4 @@ public class UserinfoControlrest extends BaseController {
 		return SUCCESS(map);
 	}
 	
-//	/**
-//	 * 更新密码
-//	 * @param res
-//	 * @param username
-//	 * @param randomNum
-//	 * @return
-//	 */
-//	@ResponseBody
-//	@RequestMapping(value = "/updatepwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-//	public ModelAndView updatePwd(HttpServletRequest res,String randomNum) {
-//		ModelAndView model = new ModelAndView("updatepwd");
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		try {
-//			
-//			String username = SessionManager.getSession(res, "username");
-//			
-//			
-////			byte[] userbyte = Coder.decryptBASE64(username);
-////			username = new String(userbyte, Constant.UTF_8);
-//						
-//			map.put("user", "username");
-//			
-//			model.addAllObjects(map);
-//			
-//			return model;
-//		} catch (Exception e) {
-//			processError(map, e);
-//		}
-//		return model;
-//	}
 }
