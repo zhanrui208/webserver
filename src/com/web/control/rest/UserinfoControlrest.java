@@ -78,6 +78,7 @@ public class UserinfoControlrest extends BaseController {
 	public String checkregedit(HttpServletRequest res, Userregedit userregedit,
 			String token) {
 		logger.info("doregedit:paramtoken:" +token);
+		logger.info("sessinid:" + res.getSession().getId());
 		logger.info("doregedit:sessiontoken:" +SessionManager.getSession(res, "token"));
 		Map<String, Object> map = initMessage();
 		try {

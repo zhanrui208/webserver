@@ -33,9 +33,6 @@ import com.web.model.Userinfo;
  */
 @Component
 public class SessionManager {
-	private final static Logger logger = LoggerFactory
-			.getLogger(SessionManager.class);
-
 	public static final int EXPIRE_TIME = 10 * 60;// 10分钟
 	public static final int REMEMBER_ME_TIME = 30 * 24 * 60 * 60;// 30天
 

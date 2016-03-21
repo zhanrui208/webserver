@@ -42,6 +42,7 @@ public class UserinfoControl extends BaseController{
 	public String regedit(HttpServletRequest res){
 		saveToken(res);
 		logger.info("regedit-token:" +SessionManager.getSession(res, "token"));
+		logger.info("sessinid:" + res.getSession().getId());
 		return "regedit";
 	}
 

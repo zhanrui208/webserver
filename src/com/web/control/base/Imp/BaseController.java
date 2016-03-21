@@ -122,7 +122,6 @@ public class BaseController extends Base implements IBaseController{
 	 */
 	public boolean checkToken(HttpServletRequest res,String token){
 		String sessiontoken = SessionManager.getSession(res, "token");
-		logger.info("checkToken:" +token);
 		return token.equals(sessiontoken);
 	}
 	
