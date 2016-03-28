@@ -1,4 +1,4 @@
-package com.web.dao;
+package com.web.dao.server;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import sun.util.logging.resources.logging;
 
+import com.web.dao.CommonDao;
 import com.web.model.Userinfo;
 import com.web.model.Userregedit;
 

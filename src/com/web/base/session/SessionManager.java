@@ -22,7 +22,7 @@ import com.web.base.session.Session;
 import com.web.base.session.SessionNotExistsException.Code;
 import com.web.base.session.imp.SessionImpl;
 import com.web.base.util.Base64Encoder;
-import com.web.dao.UserinfoDao;
+import com.web.dao.server.UserinfoDao;
 import com.web.model.Userinfo;
 
 /**

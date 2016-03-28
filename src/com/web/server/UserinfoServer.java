@@ -18,7 +18,7 @@ import com.aliyuncs.profile.IClientProfile;
 import com.web.base.Coder;
 import com.web.base.Constant;
 import com.web.common.RandomGenerator;
-import com.web.dao.UserinfoDao;
+import com.web.dao.server.UserinfoDao;
 import com.web.model.Userinfo;
 import com.web.model.Userregedit;
 
