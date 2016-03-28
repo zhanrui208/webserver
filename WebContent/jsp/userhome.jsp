@@ -12,21 +12,22 @@
    
   	<script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
   	<script type="text/javascript" src="js/userhome.js"  ></script>
+  	
 </head>
 <body>
-	<div id = "main">		
+	<div id = "main">
 		<!-- 头部分 -->
 		<div id = "main_head">
 			<!-- logo -->
 			<div id = "main_logo" >
 				<a id="logo" href="home" title="Agora" rel="home">
-					<img style="padding-top: 5px;" src="image\LOGO.png" alt="加载图片失败">
+					<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
 				</a>
 			</div>
 
 			<!-- 退出按钮 -->
 			<div id ="userlogout_div">
-				<a id ="userlogout_btn"  href="logout">退出</a>
+				<a id ="userlogout_btn">退出</a>
 			</div>
 						
 			<!-- 显示名字 -->
@@ -35,7 +36,6 @@
 				<a id ="username_other">,晚上好</a>
 			</div>
 		</div>
-		<!-- 头部分 -->
 		
 		<!-- 主体部分 -->
 		<div id = main_body>
@@ -43,20 +43,22 @@
 
 			<!-- 第一部分 :左边侧边菜单栏-->
 			<div id ="part1">
-				<div id ="part11" class ="part_type" href="mymeeting">
-					<!-- 会议室部分-->
-					<a class="C_menu_a">会议室      ></a>
-					<!-- 图片部分 -->
-				</div>
+				<ul  id ="part11">
+					<li href="" class="hover_active">
+						<div  href="11" class ="padleft20" ><a>会议室     ></a></div>
+					</li>
+					<li href="" >
+						<div  href="11" class ="padleft20"><a>会议室 2    ></a></div>
+					</li>
+				</ul>
 			</div>	
 			<!-- 第一部分 -->
-			
-			
+				
 			<!-- 第二部分-->
 			<div id ="part2" class="part2_main_public">
-				<div id =part21>
+				<div id =part21 class="part_show">
 					<!-- 标题 -->
-					<div id="part21_head_div">
+					<div id="part211_head_div">
 						<div id ="refreshmeet_div">
 							 <button id="refreshmeet">刷新</button>
 						</div>
@@ -66,7 +68,7 @@
 					</div>
 					
 					<!-- 标题 -->
-					<div id ="part22" class="rowhead">
+					<div id ="part212" class="rowhead">
 						<div id ="meetname_div" class="col col1" >
 							<a class="meetname" >会议室名</a>
 						</div>	
@@ -83,12 +85,12 @@
 							<a class="paytype">付费方式</a>
 						</div>
 						<div id="manage_div" class="col col6">
-							<a class="manage">操作</a>
+							<a class="manage">管理</a>
 						</div>																	
 					</div>
 					<!-- 标题 -->
 					<!-- 值部分 -->
-					<div id ="part23" class="rowvalue">
+					<div id ="part213" class="rowvalue">
 						<div id ="meetname_div" class="col col1" >
 							<a class="meetname" >苹果发布会</a>
 						</div>	
@@ -105,15 +107,19 @@
 							<a class="paytype">包年包月</a>
 						</div>
 						<div id="manage_div" class="col col6">
-							<a class="manage">管理</a>
+							<button id ="editmeet">编辑</button>
+							<!--  <a href="" class="manage">管理</a> -->
 						</div>																	
 					</div>
 					<!-- 值部分 -->
+				</div>
+				<div id ="part22"  class="part_hide">
+					<p>第二个页签</p>
 				</div>
 			</div>
 			<!-- 第二部分-->
 		</div>	
 		<!-- 主体部分 -->
-	</div>		
+	</div>
 </body>
 </html>

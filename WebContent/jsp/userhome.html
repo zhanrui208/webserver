@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
   <meta charset="UTF-8">
   <title>千鸿通信</title>
-      <link href="D:\Java\xiangmu\webserver\WebContent\css\userhome.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
-  <link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
+  <link href="D:\Java\xiangmu\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
+  <link href="D:\Java\xiangmu\webserver\WebContent\css\userhome.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+  <script type="text/javascript" src="D:\Java\xiangmu\webserver\WebContent\js\userhome.js" ></script>
 </head>
 <body>
 	<div id = "main">
@@ -38,37 +38,22 @@
 
 			<!-- 第一部分 :左边侧边菜单栏-->
 			<div id ="part1">
-			<!--  
-				<div id ="part11" >
-					<a>会议室      ></a>
-				</div>
-			-->		
 				<ul  id ="part11">
-					<li href="11" id ="ccc" onmouseover="show()" onmouseout="this.style.background=''">
-						<a href="">会议室      ></a>
+					<li href="" class="hover_active">
+						<div  href="11" class ="padleft20" ><a>会议室     ></a></div>
 					</li>
-					<li onmouseover="this.style.background='#666666'" onmouseout="this.style.background=''">
-						<a>会议室 2     ></a>
+					<li href="" >
+						<div  href="11" class ="padleft20"><a>会议室 2    ></a></div>
 					</li>
 				</ul>
 			</div>	
 			<!-- 第一部分 -->
-			<script type="text/javascript">
-				function show(){
-					document.getElementById("ccc").style.background='#666666';
-					document.getElementById("ccc").style.cursor="hand";
-				}
-				function close(){
-					alert("222");
-					document.getElementById("s1").style.background='';
-				}			
-			</script>
 				
 			<!-- 第二部分-->
 			<div id ="part2" class="part2_main_public">
-				<div id =part21>
+				<div id =part21 class="part_show">
 					<!-- 标题 -->
-					<div id="part21_head_div">
+					<div id="part211_head_div">
 						<div id ="refreshmeet_div">
 							 <button id="refreshmeet">刷新</button>
 						</div>
@@ -78,7 +63,7 @@
 					</div>
 					
 					<!-- 标题 -->
-					<div id ="part22" class="rowhead">
+					<div id ="part212" class="rowhead">
 						<div id ="meetname_div" class="col col1" >
 							<a class="meetname" >会议室名</a>
 						</div>	
@@ -100,7 +85,7 @@
 					</div>
 					<!-- 标题 -->
 					<!-- 值部分 -->
-					<div id ="part23" class="rowvalue">
+					<div id ="part213" class="rowvalue">
 						<div id ="meetname_div" class="col col1" >
 							<a class="meetname" >苹果发布会</a>
 						</div>	
@@ -117,10 +102,14 @@
 							<a class="paytype">包年包月</a>
 						</div>
 						<div id="manage_div" class="col col6">
-							<a class="manage">管理</a>
+							<button>编辑</button>
+							<!--  <a href="" class="manage">管理</a> -->
 						</div>																	
 					</div>
 					<!-- 值部分 -->
+				</div>
+				<div id ="part22"  class="part_hide">
+					<p>第二个页签</p>
 				</div>
 			</div>
 			<!-- 第二部分-->

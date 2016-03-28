@@ -140,4 +140,28 @@ public class UserinfoControl extends BaseController{
 		mov.addObject("data", map);
 		return mov;
 	}
+	
+	
+	/**
+		创建meet
+	 */
+	@RequestMapping(value ="/createmeet")
+	public String createmeet(HttpServletRequest res){
+		saveToken(res);
+		logger.info("createmeet-token:" +SessionManager.getSession(res, "token"));
+		return "editmeet";
+	}
+	
+	/**
+		修改meet
+	 */
+	@RequestMapping(value ="/editmeet")
+	public ModelAndView editmeet(HttpServletRequest res){
+		ModelAndView mov = new ModelAndView();
+		saveToken(res);
+		logger.info("forgetpwd-token:" +SessionManager.getSession(res, "token"));
+		mov.addObject("meet", "1");
+		mov.setViewName("editmeet");
+		return mov;
+	}
 }

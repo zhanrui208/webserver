@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+      <link href="D:\Java\xiangmu\webserver\WebContent\css\userhome.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\Java\xiangmu\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+</head>
+<body>
+			<div id ="part1">
+				<ul  id ="part11">
+					<li href=""  >
+						<div  href="11" class ="padleft20" ><a>会议室     ></a></div>
+					</li>
+					<li href="" onmouseover="this.style.background='#666666'" onmouseout="this.style.background=''" >
+						<div  href="11" class ="padleft20"><a>会议室 2    ></a></div>
+					</li>
+				</ul>
+			</div>	
+			
+		<script type="text/javascript">
+
+				//控制列表的央视和显示
+	      $("#part11 li").live("mouseover",function(){
+                $(this).css("background",'#666666');
+          });
+	      $("#part11 li").live("mouseout",function(){
+	    	  $(this).css("background",'');
+          });
+	      $("#part11 li").live("click",function(){
+	    	  $(this).css("background",'#666666');
+          });
+
+		</script>
+				
+</body>
+</html>

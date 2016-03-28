@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+body{
+	margin-top: 0px;
+}
+
+
 #main {
 	width: 1024px;
 	background: white;
@@ -56,7 +61,8 @@
 #part11{
 	height: 60px;
 	line-height: 60px;
-	padding-left: 40px;
+	margin-left: -40px;
+	margin-top: 0px;
 }
 
 #part2{
@@ -85,7 +91,7 @@
 	padding: 1px 10px
 }
 
-#part21_head_div {
+#part211_head_div {
 	height: 40px;
 	line-height: 40px;
 }
@@ -100,7 +106,7 @@
 	float: right;
 }
 
-#part22 {
+#part212 {
 	background: rgb(214, 214, 245);
 	height: 40px;
 	line-height: 40px;
@@ -110,7 +116,7 @@
 
 
 /**第三部分 **/
-#part23 {
+#part213 {
 	height: 40px;
 	line-height: 40px;
 	background: white;
@@ -119,13 +125,51 @@
 
 .col {
 	height: 40px;
-	width: 16%;
 	float: left;
 }
 
+/** 每列宽度 **/
 .col1{
 	text-align: center;
+	width: 20%;
 }
+.col2{
+	width: 20%;
+}
+.col3{
+	width: 20%;
+}
+.col4{
+	width: 16%;
+}
+.col5{
+	width: 16%;
+}
+.col6{
+	width: 8%;
+}
+
+
+/**继承 **/
+	.padleft20{
+		padding-left: 20px;
+	}
+	
+	.hover_active{
+		 background:#D6DFE0;
+	}
+	.CR_DBCC4E{
+		background:#B0E2E6;
+	}
+	.part_hide{
+		display: none;
+	}
+	.part_show{
+		display: block;
+	}
+
+/**/
+
 
 
 /** 尾部分 **/
