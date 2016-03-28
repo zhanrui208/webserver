@@ -46,7 +46,7 @@ body{
 /** 第一部分*/
 
 #main_body{
-	height: 600px;
+	height: 100%;
 	width:100%;
 	clear: both;
 }
@@ -59,17 +59,16 @@ body{
 }
 
 #part11{
-	height: 60px;
+	height: 100%px;
 	line-height: 60px;
 	margin-left: -40px;
 	margin-top: 0px;
 }
 
 #part2{
-	height:600px;
+	height:100%;
 	width:80%;
 	float:right;
-	height: 600px;
 	background: powderblue;
 }
 		
@@ -86,9 +85,9 @@ body{
 	/** 菜单部分**/
 	
 #part21 {
-	height: 600px;
-	margin: 5px 10px;
-	padding: 1px 10px
+	height: 100%;
+	padding: 16px 10px;
+	box-sizing: border-box;
 }
 
 #part211_head_div {
@@ -113,14 +112,19 @@ body{
 	font-size: 12px;
 }
 
-
-
-/**第三部分 **/
 #part213 {
 	height: 40px;
 	line-height: 40px;
 	background: white;
 	font-size: 14px;
+}
+
+/**第三部分 **/
+
+#part22{
+	height: 100%;
+	padding: 16px 10px;
+	box-sizing: border-box;
 }
 
 .col {

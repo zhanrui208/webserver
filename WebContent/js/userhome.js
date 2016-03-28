@@ -1,4 +1,33 @@
-  $("#part11 li").live("mouseover",function(){
+
+$("document").ready(function(){
+	//窗体的宽度
+	var WD=window.innerWidth
+	|| document.documentElement.clientWidth
+	|| document.body.clientWidth;
+	//窗体的高度
+	var WH=window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	
+	
+	$("body").width(WD);
+	$("#main").width(WD);
+	
+	var headH= $("#main_head").height()+1;//1底线高度
+	
+	$("#main").height(WH-headH);
+	
+	var MINH = 600 - headH;
+	
+	$("#part1").css("minHeight",MINH+"px");
+	$("#part2").css("minHeight",MINH+"px");
+	
+	
+});
+
+
+
+$("#part11 li").live("mouseover",function(){
 	  $(this).addClass("hover_active");
   });
   $("#part11 li").live("mouseout",function(){
