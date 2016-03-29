@@ -27,7 +27,7 @@ h1,h2,h3,h4,h5,h6 {
 	font-weight:normal
 } 
 q:before,q:after {
-content:''
+	content:''
 } 
 abbr,acronym { 
 	border:0
@@ -173,16 +173,22 @@ abbr,acronym {
 	line-height: 150%;
 }
 body {
-	width:1024px;
+	/** width:1024px; **/
 	height:100%;
   	font-weight: normal;
   	font-style: normal;
 	font-size: 14px;
 	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    margin-top:20px;
 	color: #000000;
 	background-color: #fff;
 	background-repeat: repeat-x;
 	
+}
+a {
+    text-decoration: none;
 }
 
 table {
@@ -358,6 +364,12 @@ ul, li {
 .wid80{
 	width: 80px;
 }
+.widbase{
+	width: 1020px;
+}
+.widminbase{
+	min-width: 1020px;
+}
 
 
 .martop10{
@@ -477,6 +489,11 @@ ul, li {
  .hided{
  	display: none;
  }
- 
+ /**  div的内容居中*/
+ .centerdiv{
+ 	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+ }
  
  

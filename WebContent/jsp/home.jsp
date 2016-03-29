@@ -19,7 +19,7 @@
 		<!-- 头部分 -->
 		
 		<!-- 主体部分 -->
-		<div id = main_body>
+		<div class="widminbase widbase" id = main_body>
 			<!-- 第一部分 -->
 			<div id ="part10">
 				<div id ="part11" >
@@ -36,12 +36,12 @@
 				</div>
 			</div>
 			
-			<div style="height: 40px;text-align: center;">
-				<a>千鸿通信可以为你提供什么样的服务</a>
+			<div style="height: 80px;text-align: center;">
+				<a style="line-height: 80px;">千鸿通信可以为你提供什么样的服务</a>
 			</div>
 			
 			<!-- 呢绒介绍 -->
-			<div id ="part30">
+			<div class="widbase centerdiv" id ="part30">
 				<div id ="part31" class="vc_col-sm-12">
 					<!-- 图片第1部分 -->
 					<div id ="part311" class="vc_row wpb_row ">

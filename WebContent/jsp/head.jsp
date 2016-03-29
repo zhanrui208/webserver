@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
     
-		<div id = "menu_head">
+		<div class="widminbase" id = "menu_head">
 			<!-- logo -->
 			<div id = "menu_logo" >
 				<a id="logo" href="/" title="Agora" rel="home">
