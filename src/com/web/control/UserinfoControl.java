@@ -35,25 +35,27 @@ public class UserinfoControl extends BaseController{
 	
 	@RequestMapping(value ="/login")
 	public String login(){
+		logger.info("接受login请求");
 		return "login";
 	}
 	
 	@RequestMapping(value ="/regedit")
 	public String regedit(HttpServletRequest res){
+		logger.info("接受regedit请求");
 		saveToken(res);
-		logger.info("regedit-token:" +SessionManager.getSession(res, "token"));
-		logger.info("sessinid:" + res.getSession().getId());
 		return "regedit";
 	}
 
 	@RequestMapping(value ="/resetpwd")
 	public String resetPwd(HttpServletRequest res){
+		logger.info("接受resetpwd请求");
 		saveToken(res);
 		return "resetpwd";
 	}
 	
 	@RequestMapping(value ="/upuserinfo")
 	public String upuserinfo(){
+		logger.info("接受upuserinfo请求");
 		return "upuserinfo";
 	}
 	
@@ -64,9 +66,7 @@ public class UserinfoControl extends BaseController{
 	 */
 	@RequestMapping(value ="/userhome")
 	public String userhome(HttpServletRequest res){
-		String userid =SessionManager.getUserSession(res);
-		System.out.println("userid:" +userid);
-		
+		logger.info("接受userhome请求");
 		return "userhome";
 	}
 	
@@ -77,8 +77,8 @@ public class UserinfoControl extends BaseController{
 	 */
 	@RequestMapping(value ="/forgetpwd")
 	public String forgetpwd(HttpServletRequest res){
+		logger.info("接受forgetpwd请求");
 		saveToken(res);
-		logger.info("forgetpwd-token:" +SessionManager.getSession(res, "token"));
 		return "forgetpwd";
 	}
 		
@@ -90,6 +90,7 @@ public class UserinfoControl extends BaseController{
 	@RequestMapping(value = "/activateUser")
 	public String activateUser(HttpServletRequest req,ModelMap model, String username,
 			String randomNum) {
+		logger.info("接受activateUser请求，username="+username);
 		Map<String, Object> map = initMessage();
 		try {
 			byte[] userbyte = Coder.decryptBASE64(username);
@@ -114,6 +115,7 @@ public class UserinfoControl extends BaseController{
 	}
 	@RequestMapping(value = "/updatepwd")
 	public ModelAndView UpdatePwd(HttpServletRequest res,String rand,String token) {
+		logger.info("接受updatepwd请求，rand="+rand);
 		Map<String, Object> map = initMessage();
 		ModelAndView mov = new ModelAndView();
 		try {
@@ -147,8 +149,8 @@ public class UserinfoControl extends BaseController{
 	 */
 	@RequestMapping(value ="/createmeet")
 	public String createmeet(HttpServletRequest res){
+		logger.info("接受createmeet请求，");
 		saveToken(res);
-		logger.info("createmeet-token:" +SessionManager.getSession(res, "token"));
 		return "editmeet";
 	}
 	
@@ -157,9 +159,9 @@ public class UserinfoControl extends BaseController{
 	 */
 	@RequestMapping(value ="/editmeet")
 	public ModelAndView editmeet(HttpServletRequest res){
+		logger.info("接受editmeet请求，");
 		ModelAndView mov = new ModelAndView();
 		saveToken(res);
-		logger.info("forgetpwd-token:" +SessionManager.getSession(res, "token"));
 		mov.addObject("meet", "1");
 		mov.setViewName("editmeet");
 		return mov;

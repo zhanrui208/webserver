@@ -8,27 +8,28 @@
 
 <!-- 可选的Bootstrap主题文件（一般不使用） -->
 <!-- <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>  -->
-    <link href="D:\Java\xiangmu\webserver\WebContent\css\about.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css\head.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css/foot.css" rel="stylesheet" type="text/css"/>
+    <link href="D:\MY\webserver\WebContent\css\about.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\MY\webserver\WebContent\WebContent\css\head.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\MY\webserver\WebContent\css/foot.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\MY\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
+	<link href="D:\MY\webserver\WebContent\css\editmeet.css" rel="stylesheet" type="text/css"/>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-
-
+	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="D:\MY\webserver\WebContent\js\editmeet.js"></script>
+	
 </head>
 <body>
 <div id = "main">
 			<!-- 头部分 -->
 	<div id = "main_head">
 		<!-- logo -->
-		<div id = "main_logo" >
-			<a id="logo" href="home" title="Agora" rel="home">
-				<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
+		<div class ="heg80" id = "main_logo " >
+			<a  id="logo" href="home" title="Agora" rel="home">
+				<img src="D:\MY\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
 			</a>
 		</div>
 		<!-- logo -->
@@ -61,63 +62,11 @@
 			</div>
 			  -->
 			<div class="maincontext">
-				<style>
-					.container{
-						margin-left: 0px;
-					}
-					#form1{
-						height: 300px;
-						margin-top: -15px;
-  						background: #f0f0f0;
-  					}
-					.container{
-						padding:20px
-					}
-					.maincontext{
-						height:auto !important;
-						min-height: 100px;
-					}
-					.form-group{
-						height: 45px;
-					}
-					.pad20{
-						padding: 20px;
-					}
-					.heg20{
-						height: 20px;
-					}
-					.heg80{
-						height: 80px;
-					}
-					.wid80{
-						width: 80px;
-					}
-					.mar10{
-						margin: 10px 10px;
-					}
-					.pd10{
-						padding: 10px 10px;
-					}
-					.bg-c{
-						background: #f0f0f0;//background: #f5f5f5;
-					}
-					.mar30{
-						margin-top: 30px;
-					}
-					#part21{
-						margin-top: -15px;
-						margin-left: 0px;
-					}
-					hr{
-					  	margin-top: 2px;
-						border-top-color: #E7D8D8;
-					}
-					.heg40{
-						height: 40px;
-					}
-				</style>
+	
 				<form class="form-horizontal col-sm-9" id ="form1" role="form">
-					<div class="form-group1  mar10" id ="bg1">
+					<div class="form-group1  marall10" id ="bg1">
+						<div class="form-group">
+						</div>
 					   <div class="form-group">
 					      <label class="col-sm-3 control-label">实例名称:</label>
 					      <div class="col-sm-6">
@@ -165,18 +114,23 @@
 					      </div>
 					      <label class="col-sm-1 control-label">月</label>
 					   </div>
+					   
+					   <div class="form-group">
+						</div>
+					   
+					   
 					</div>						
 
 				   <!-- 2 -->
-				  <div class="form-group heg80  mar10 pd10 bg-c" id ="bg1">
+				  <div class="form-group marall10 padall10 bg-c" id ="bg1" style="height: 80px;">
 				  	<p>会议直播（无需安装开户端，支持浏览器，手机观看） 该服务为按流量收费，用多少算多少，1TB/元</p>
-					<div class="radio">
-					   <label class="wid80">
-					      <input type="radio" name="optionsRadios" id="optionsRadios1" 
+					<div class="radio1">
+					   <label class="wid80 marleft40">
+					      <input type="radio" name="optRadios1" id="opt1" 
 					         value="option1" checked> 是
 					   </label>
 					   <label class="wid80">
-					      <input type="radio" name="optionsRadios" id="optionsRadios2" 
+					      <input type="radio" name="optRadios1" id="opt2" 
 					         value="option2">否
 					   </label>
 					</div>  
@@ -184,16 +138,16 @@
 
 
 				   <!-- 4 -->
-				  <div class="form-group heg80  mar10 pd10 bg-c" id ="bg2">
+				  <div class="form-group heg80  marall10 padall10 bg-c" id ="bg2" style="height: 80px;">
 				  	<p>实时在线录制（后台实时在线录制，实时点播观看，再也不用担心繁琐的转码，上传操作了）</p>
-					<div class="radio">
-					   <label class="wid80">
-					      <input type="radio" name="optionsRadios" id="optionsRadios1" 
+					<div class="radio2">
+					   <label class="wid80 marleft40 ">
+					      <input type="radio" name="optRadios2" id="opt3" 
 					         value="option1" checked> 是
 					   </label>
 					   <label class="wid80">
-					      <input type="radio" name="optionsRadios" id="optionsRadios2" 
-					         value="option2">否
+					      <input type="radio" name="optRadios2" id="opt4" 
+					         value="option2" checked>否
 					   </label>
 					</div>  
 				  </div>
@@ -212,16 +166,16 @@
 				<div class="col-sm-3 ">
 		   			<div class="row bg-c" id ="part21">
 		   					<div class="heg40">
-		   						<label class="mar10">当前配置</label>
+		   						<label class="marall10">当前配置</label>
 		   						<hr>
 		   					</div>
-    						<div class ="col-sm-12 mar30">
-    							<p class="height30">
+    						<div class ="col-sm-12 martop30">
+    							<p class="heg30">
     								<a class=" col-sm-6 text-left">11112</a>
     								<a class="col-sm-6 text-left">2222</a>
     							</p>
 
-     							<p class="height30">
+     							<p class="heg30">
     								<a class=" col-sm-6 text-left">11112</a>
     								<a class="col-sm-6 text-left">2222</a>
     							</p>    							
@@ -233,12 +187,7 @@
     						</div>
  						</div>
 					<style>
-						.height30{
-							height: 30px;
-						}
-						.martop20{
-							margin-top: 20px;
-						}
+
 					</style>
 				</div>
 			</div>

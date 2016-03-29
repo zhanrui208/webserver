@@ -51,6 +51,7 @@ public class UserinfoControlrest extends BaseController {
 	public String checklogin(HttpServletRequest req,
 			HttpServletResponse response, String username, String password,
 			@RequestParam(defaultValue = "0") String remember) {
+		logger.info("登陆/dologin请求，username={},password={}",username,password);
 		Map<String, Object> map = initMessage();
 		try {
 			userinfoServer.login(username, password, map);
@@ -63,6 +64,7 @@ public class UserinfoControlrest extends BaseController {
 			}
 		} catch (Exception e) {
 			processError(map, e);
+			logger.error("dologin:err:"+e.getMessage());
 		}
 		return SUCCESS(map);
 	}
@@ -77,9 +79,7 @@ public class UserinfoControlrest extends BaseController {
 	@RequestMapping(value = "/doregedit", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String checkregedit(HttpServletRequest res, Userregedit userregedit,
 			String token) {
-		logger.info("doregedit:paramtoken:" +token);
-		logger.info("sessinid:" + res.getSession().getId());
-		logger.info("doregedit:sessiontoken:" +SessionManager.getSession(res, "token"));
+		logger.info("注册/doregedit请求，username={}",userregedit.getUserName());
 		Map<String, Object> map = initMessage();
 		try {
 			//验证token
@@ -100,6 +100,7 @@ public class UserinfoControlrest extends BaseController {
 			}
 		} catch (Exception e) {
 			processError(map, e);
+			logger.error("doregedit:err:"+e.getMessage());
 		}
 		return SUCCESS(map);
 	}
@@ -116,6 +117,7 @@ public class UserinfoControlrest extends BaseController {
 	@RequestMapping(value = "/doresetpwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String doresetPwd(HttpServletRequest res, String username,
 			String oldpassword, String newpassword, String token) {
+		logger.info("修改密码/doresetpwd请求，username={},password={}",username,newpassword);
 		Map<String, Object> map = initMessage();
 		try {
 			//验证token
@@ -131,6 +133,7 @@ public class UserinfoControlrest extends BaseController {
 			}
 		} catch (Exception e) {
 			processError(map, e);
+			logger.error("doresetpwd:err:"+e.getMessage());
 		}
 		return SUCCESS(map);
 	}
@@ -144,11 +147,13 @@ public class UserinfoControlrest extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/checkuser")
 	public Object checkUser(String username) {
+		logger.info("验证用户/checkuser请求，username={}",username);
 		Map<String, Object> map = initMessage();
 		try {
 			userinfoServer.checkUser(username, map);	
 		} catch (Exception e) {
 			processError(map, e);
+			logger.error("checkuser:err:"+e.getMessage());
 		}
 		return SUCCESSJson(map);
 	}
@@ -156,7 +161,7 @@ public class UserinfoControlrest extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/doforgetpwd",produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String doforgetpwd(HttpServletRequest res,String username,String code,String token) {
-		
+		logger.info("忘记密码/doforgetpwd请求，username={}",username);
 		Map<String, Object> map = initMessage();
 		try {
 //			//验证token
@@ -196,6 +201,7 @@ public class UserinfoControlrest extends BaseController {
 			clearToken(res);	
 		} catch (Exception e) {
 			processError(map, e);
+			logger.error("doforgetpwd:err:"+e.getMessage());
 		}
 		return SUCCESS(map);
 	}	
@@ -203,6 +209,7 @@ public class UserinfoControlrest extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/sendcode", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public Object sendCode(HttpServletRequest res,String username,String token) {
+		logger.info("发送验证码/sendcode请求，username={}",username);
 		Map<String, Object> map = initMessage();
 		try {
 			//验证token
@@ -233,6 +240,7 @@ public class UserinfoControlrest extends BaseController {
 			}
 		} catch (Exception e) {
 			processError(map, e);
+			logger.info("sendcode:err:"+e.getMessage());
 		}
 		return SUCCESS(map);
 	}	
@@ -249,6 +257,7 @@ public class UserinfoControlrest extends BaseController {
 	@ResponseBody
 	@RequestMapping(value = "/doupdatepwd", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public Object doUpdatePwd(HttpServletRequest res,String username,String password,String token) {
+		logger.info("更新密码/doupdatepwd请求，username={}，password={}",username,password);
 		Map<String, Object> map = initMessage();
 		try {
 //			//验证token
@@ -278,6 +287,7 @@ public class UserinfoControlrest extends BaseController {
 				return SUCCESS(map);
 			}
 		} catch (Exception e) {
+			logger.info("doupdatepwd:err:"+e.getMessage());
 			processError(map, e);
 		}
 		return SUCCESS(map);

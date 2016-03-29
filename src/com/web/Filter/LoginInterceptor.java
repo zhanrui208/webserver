@@ -16,7 +16,7 @@ import com.web.base.session.SessionManager;
 * @author
 */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-   private static final String[] IGNORE_URI = {"/login.jsp", "/Login/","backui/","frontui/"};
+   private static final String[] IGNORE_URI = {"","/","home","videomeet","about","login", "regedit","activateUser","updatepwd"};
 
    @Override
    public boolean preHandle(HttpServletRequest req, HttpServletResponse res, Object handler) throws Exception {

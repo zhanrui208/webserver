@@ -26,8 +26,7 @@ $("document").ready(function(){
 });
 
 
-
-$("#part11 li").live("mouseover",function(){
+  $("#part11 li").live("mouseover",function(){
 	  $(this).addClass("hover_active");
   });
   $("#part11 li").live("mouseout",function(){
