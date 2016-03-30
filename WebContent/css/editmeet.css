@@ -9,10 +9,10 @@ body{
 }
 
 #form1{
-	height: 525px;
+	height: 450px;
 	margin-top: -15px;
-			background: #f0f0f0;
-		}
+	background: #f0f0f0;
+}
 .maincontext{
 	height:auto !important;
 	min-height: 100px;
@@ -27,6 +27,7 @@ body{
 }
 
 #part21{
+	height: 630px;
 	margin-top: -15px;
 	margin-left: 0px;
 }
@@ -34,4 +35,8 @@ body{
 hr{
   	margin-top: 2px;
 	border-top-color: #E7D8D8;
+}
+
+#baseinfo a{
+	text-decoration: none
 }

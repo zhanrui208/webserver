@@ -9,8 +9,8 @@
 <!-- 可选的Bootstrap主题文件（一般不使用） -->
 <!-- <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>  -->
     <link href="D:\MY\webserver\WebContent\css\about.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\MY\webserver\WebContent\WebContent\css\head.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\MY\webserver\WebContent\css/foot.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\MY\webserver\WebContent\css\head.css" rel="stylesheet" type="text/css"/>
+   	<link href="D:\MY\webserver\WebContent\css\foot.css" rel="stylesheet" type="text/css"/>
    	<link href="D:\MY\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
 	<link href="D:\MY\webserver\WebContent\css\editmeet.css" rel="stylesheet" type="text/css"/>
 
@@ -19,12 +19,13 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="D:\MY\webserver\WebContent\js\public.js"></script>
 	<script type="text/javascript" src="D:\MY\webserver\WebContent\js\editmeet.js"></script>
 	
 </head>
 <body>
 <div id = "main">
-			<!-- 头部分 -->
+	<!-- 头部分 -->
 	<div id = "main_head">
 		<!-- logo -->
 		<div class ="heg80" id = "main_logo " >
@@ -43,24 +44,7 @@
 			<button type="button" class="btn btn-default">返回列表   </button>
 			
 			 <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="100%" color=#987cb9 SIZE=1>
-			<!--
-			<div class="tabbable tabs-left" id="tabs-627018">
-				<ul class="nav nav-tabs">
-					<li><a contenteditable="true" data-toggle="tab" href="#panel-874435">第一部分</a></li>
-					<li class="active"><a contenteditable="true" data-toggle="tab" href="#panel-633981">第二部分</a></li>
-				</ul>
-		
-				<div class="tab-content">
-					<div class="tab-pane" contenteditable="true" id="panel-874435">
-						<p>第一部分内容.</p>
-					</div>
-		
-					<div class="tab-pane active" contenteditable="true" id="panel-633981">
-						<p>第二部分内容.</p>
-					</div>
-				</div>
-			</div>
-			  -->
+
 			<div class="maincontext">
 	
 				<form class="form-horizontal col-sm-9" id ="form1" role="form">
@@ -70,8 +54,8 @@
 					   <div class="form-group">
 					      <label class="col-sm-3 control-label">实例名称:</label>
 					      <div class="col-sm-6">
-					         <input class="form-control" id="focusedInput" type="text" 
-					            placeholder="请输入密码">
+					         <input class="form-control" id="meetname"  type="text" 
+					            placeholder="请输入会议室名称">
 					      </div>
 					      <label class="col-sm-2 control-label"></label>
 					   </div>
@@ -79,8 +63,8 @@
 					   <div class="form-group">
 					      <label class="col-sm-3 control-label">最大用户数:</label>
 					      <div class="col-sm-4">
-					         <input class="form-control" id="focusedInput" type="text" 
-					            placeholder="请输入密码">
+					         <input class="form-control" id="usercounts" type="text" 
+					            placeholder="请输入最大用户数">
 					      </div>
 					      <label class="col-sm-1 control-label ">人</label>
 					   </div>			   
@@ -88,35 +72,25 @@
 					   <div class="form-group">
 					      <label class="col-sm-3 control-label">购买时长:</label>
 					      <div class="col-sm-3">
-					         <input class="form-control" id="focusedInput" type="text" 
-					            placeholder="请输入密码">
+					         <input class="form-control" id="time" type="text" 
+					            placeholder="请输入购买时长">
 					      </div>
 					      <label class="col-sm-1 control-label">月</label>
 					   </div>
 				   
 					   <div class="form-group">
-					      <label class="col-sm-3 control-label">产品类型:</label>
+					      <label class="col-sm-3 control-label"  >产品类型:</label>
 					      <div class="col-sm-4">
-								<select class="form-control">
-							         <option>标清(最大分辨率640*480)</option>
-							         <option>高清(最大分辨率800*600)</option>
-							         <option>高清(最大分辨率1024*800)</option>
+								<select class="form-control" id="type" >
+							         <option value=1 >标清(最大分辨率640*480)</option>
+							         <option value=2 >高清(最大分辨率800*600)</option>
+							         <option value=3 >高清(最大分辨率1024*800)</option>
 								</select>
 					      </div>
 					      <label class="col-sm-2 control-label"></label>
 					   </div>
-	
 					   <div class="form-group">
-					      <label class="col-sm-3 control-label">媒体文件保存时长:</label>
-					      <div class="col-sm-3">
-					         <input class="form-control" id="focusedInput" type="text" 
-					            placeholder="请输入密码">
-					      </div>
-					      <label class="col-sm-1 control-label">月</label>
 					   </div>
-					   
-					   <div class="form-group">
-						</div>
 					   
 					   
 					</div>						
@@ -151,44 +125,70 @@
 					   </label>
 					</div>  
 				  </div>
-	
-					<!-- 5 
-				   <div  class="col-sm-12 ">
-					   <div class="col-sm-2"></div>				   				   
-					   <button type="button" class="btn btn-default col-sm-2"> 确 认   </button>
-					   <div class="col-sm-3"></div>
-					   <button type="button" class="btn btn-default col-sm-2"> 购 买   </button>
-				   		<div class="col-sm-2"></div>
-				   </div>	
-					-->
-				   
+			   
 				</form>	   
 				<div class="col-sm-3 ">
 		   			<div class="row bg-c" id ="part21">
-		   					<div class="heg40">
-		   						<label class="marall10">当前配置</label>
-		   						<hr>
-		   					</div>
-    						<div class ="col-sm-12 martop30">
-    							<p class="heg30">
-    								<a class=" col-sm-6 text-left">11112</a>
-    								<a class="col-sm-6 text-left">2222</a>
-    							</p>
+	   					<div class="heg40">
+	   						<label class="marall10">当前配置</label>
+	   						<hr>
+	   					</div>
+   						<div class ="col-sm-12 martop30" id="baseinfo">
+   							<p class="heg50">
+   								<a class=" col-sm-6 text-left">实例名称:</a>
+   								<a class="col-sm-6 text-left" id ="p-meetname"></a>
+   							</p>
 
-     							<p class="heg30">
-    								<a class=" col-sm-6 text-left">11112</a>
-    								<a class="col-sm-6 text-left">2222</a>
-    							</p>    							
-    						</div>
-   						<div class="col-xs-4 col-md-offset-4 martop20"> 
-     						<p class ="col-sm-12">
-     							<button type="button" class="btn btn-default"> 确认支付   </button>
-     						</p>
-    						</div>
- 						</div>
-					<style>
+    							<p class="heg50">
+   								<a class=" col-sm-6 text-left">最大用户数:</a>
+   								<a class="col-sm-6 text-left" id ="p-usercounts"></a>
+   							</p>   
 
-					</style>
+   							<p class="heg50">
+   								<a class=" col-sm-6 text-left">购买时长:</a>
+   								<a class="col-sm-6 text-left" id ="p-time"></a><a>月</a>
+   							</p>
+
+    							<p class="heg50">
+   								<a class=" col-sm-6 text-left">产品类型:</a>
+   								<a class="col-sm-6 text-left"></a>
+   							</p>   
+     							<p class="heg50">
+   								<a class=" col-sm-6 text-left">会议直播:</a>
+   								<a class="col-sm-6 text-left" id ="p-zhibo"></a>
+   							</p>
+
+    							<p class="heg50">
+   								<a class=" col-sm-6 text-left">实时在线录制:</a>
+   								<a class="col-sm-6 text-left" id ="p-luzhi"></a>
+   							</p>  
+   							
+   							<p class="heg50">
+   								<a class=" col-sm-6 text-left">已支付费用:</a>
+   								<a class="col-sm-6 text-left" id ="p-luzhi"></a>
+   							</p>
+   							  
+   							<p class="heg50">
+   								<a class=" col-sm-6 text-left">总共费用:</a>
+   								<a class="col-sm-6 text-left" id ="p-luzhi"></a>
+   							</p>  
+   							
+   							<p class="heg50">
+   								<a class=" col-sm-6 text-left">需支付费用:</a>
+   								<a class="col-sm-6 text-left" id ="p-luzhi"></a>
+   							</p> 
+   							   							   							 							
+   						</div>
+   						
+   						<div class ="col-sm-12 heg60 martop20">
+   							<div class ="col-sm-6">
+   								<button type="button" class="btn btn-default wid80" id ="save"> 保存   </button>
+   							</div>
+   							<div class ="col-sm-6">
+   								<button type="button" class="btn btn-default wid80" id ="pay"> 确认支付   </button>
+							</div>
+						</div>
+					</div>		
 				</div>
 			</div>
 		</div>
