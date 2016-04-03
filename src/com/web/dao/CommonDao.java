@@ -465,6 +465,45 @@ public class CommonDao implements IDao{
 	}
 
 	/**
+	 * 执行数据创建，并返回主键值
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public String  getcreate(String sql) throws Exception {
+		return this.getcreate(sql, new Object[0]);
+	}
+	
+	/**
+	 * 执行数据创建，并返回主键值
+	 * @param sql
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public String getcreate(String sql, Object[] params) throws Exception {
+		String roomid ="";
+		Connection conn = getConnection();
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			for (int i = 0; i < params.length; i++) {
+				ps.setObject(i + 1, params[i]);
+			}
+			ps.executeUpdate();
+			
+			ResultSet newid = ps.getGeneratedKeys();
+			newid.next();
+			roomid = newid.getInt(1)+"";
+
+		} finally {
+			cleanup(ps);
+			this.closeConnection(conn);
+		}
+		return roomid;
+	}	
+	
+	/**
 	 * 执行存储过程
 	 * 
 	 * @param callableSQL

@@ -2,9 +2,12 @@ package com.web.dao.server;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.web.dao.CommonDao;
 import com.web.model.Meetinfo;
 
+@Repository
 public class MeetinfoDao  extends CommonDao{
 	private static String m_TableName="t_";
 	private static String m_ReTableName="t_";
