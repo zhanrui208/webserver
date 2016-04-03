@@ -1,5 +1,6 @@
 package com.web.control.rest;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -20,6 +21,25 @@ public class MeetBaseControlrest  extends BaseController{
 	
 	@Autowired
 	MeetBaseServer meetBaseServer;
+	
+	/**
+	 * 查看userid的所有会议室
+	 * @param userid
+	 * @return
+	 */
+	@RequestMapping("/getmeetbase")
+	public String showMeetbase(String userid){
+		logger.info("创建会议室/getmeetbase请求，");
+		Map<String, Object> map = initMessage();
+		try {
+			List<Map<String,Object>> meetbaselist =meetBaseServer.getMeetLive(userid);
+			map.put("data", meetbaselist);
+		} catch (Exception e) {
+			processError(map, e);
+			logger.error("getmeetbase:err:"+e.getMessage());
+		}
+		return SUCCESS(map);
+	}
 	
 	/***
 	 * 创建会议室
