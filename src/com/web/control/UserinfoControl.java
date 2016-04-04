@@ -143,27 +143,4 @@ public class UserinfoControl extends BaseController{
 		return mov;
 	}
 	
-	
-	/**
-		创建meet
-	 */
-	@RequestMapping(value ="/createmeet")
-	public String createmeet(HttpServletRequest res){
-		logger.info("接受createmeet请求，");
-		saveToken(res);
-		return "editmeet";
-	}
-	
-	/**
-		修改meet
-	 */
-	@RequestMapping(value ="/editmeet")
-	public ModelAndView editmeet(HttpServletRequest res){
-		logger.info("接受editmeet请求，");
-		ModelAndView mov = new ModelAndView();
-		saveToken(res);
-		mov.addObject("meet", "1");
-		mov.setViewName("editmeet");
-		return mov;
-	}
 }

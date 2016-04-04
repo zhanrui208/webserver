@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,21 +28,33 @@ public class MeetBaseControl {
 	 * @param userid
 	 * @return
 	 */
-	@RequestMapping("/showmeet")
+	@RequestMapping("/meethome")
 	public String showMeetbase(String userid){
 		logger.info("接受showmeet请求");
 		return "meethome";
 	}
 	
+
 	/**
-	 * 显示编辑会议室的页面
-	 * @param roomid
-	 * @return
+		创建meet
 	 */
-	@RequestMapping("/editmeet")
-	public String editMeetbase(String roomid){
-		logger.info("接受editmeet请求");
+	@RequestMapping(value ="/createmeet")
+	public String createmeet(HttpServletRequest res){
+		logger.info("接受createmeet请求，");
+		//saveToken(res);
 		return "editmeet";
 	}	
 	
+	/**
+		修改meet
+	 */
+	@RequestMapping(value ="/editmeet")
+	public ModelAndView editmeet(HttpServletRequest res){
+		logger.info("接受editmeet请求，");
+		ModelAndView mov = new ModelAndView();
+		//saveToken(res);
+		mov.addObject("meet", "1");
+		mov.setViewName("editmeet");
+		return mov;
+	}
 }

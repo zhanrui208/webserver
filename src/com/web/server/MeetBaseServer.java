@@ -34,10 +34,10 @@ public class MeetBaseServer {
 	 * @param userid
 	 * @return
 	 */
-	public List<Map<String, Object>>  getMeetLive(String userid){
+	public List<Map<String, Object>>  getMeetLive(String userid,int offset,int limit){
 		List<Map<String, Object>> meetbaselist =null;
 		try{
-			meetbaselist =  meetLiveDao.getRoomIdListByUserId(userid);
+			meetbaselist =  meetLiveDao.getRoomIdListByUserId(userid,offset,limit);
 		}catch (Exception e){
 			logger.info("geSingleMeetById:" + e);
 		}

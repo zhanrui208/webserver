@@ -11,6 +11,8 @@
    <link href="css/head.css" rel="stylesheet" type="text/css"/>
    <link href="css/foot.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+   <script type="text/javascript" src="js/home.js" ></script>
+  
 </head>
 <body>
 	<div id = "main">
@@ -26,7 +28,7 @@
 					<!-- 图片部分 -->
 					<div id ="part11_picture" class="picture">
 						<div class="ms-picture" style="height: 100%; opacity: 1;">
-							<img src="image/sound-waves.jpg" alt="" title="" >
+							<img class ="mainpic" src="image/sound-waves.jpg" alt="" title="" >
 						</div>
 						<div id="ms-context">
 							<h1 style="text-align: center;"><span style="color: #ffffff;">咫尺天涯</span></h1>

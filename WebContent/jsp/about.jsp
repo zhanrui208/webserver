@@ -28,7 +28,7 @@
 					<!-- 图片部分 -->
 					<div id ="part11_picture" class="picture">
 						<div class="ms-picture" style="height: 100%; opacity: 1;">
-							<img src="image/sound-waves.jpg" alt="" title="" >
+							<img class ="mainpic" src="image/sound-waves.jpg" alt="" title="" >
 						</div>
 					</div>
 					<!-- 图片部分 -->

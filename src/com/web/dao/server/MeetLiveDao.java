@@ -123,6 +123,9 @@ public class MeetLiveDao extends CommonDao {
 	public List<Map<String,Object>> getRoomIdListByUserId(String userid) throws Exception {
 		return getRoomIdList(userid,-1,-1);
 	}
+	public List<Map<String,Object>> getRoomIdListByUserId(String userid,int offset, int limit) throws Exception {
+		return getRoomIdList(userid,offset,limit);
+	}
 	
 	public List<Map<String,Object>> getRoomIdList(String userid,int offset, int limit) throws Exception {
 		String sql = " select RoomID from " + m_ROOMUSERS ;

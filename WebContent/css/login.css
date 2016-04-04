@@ -2,7 +2,7 @@
 
 /** 标签公共  */
 #main {
-	padding: 20px 30px;
+	/** padding: 20px 30px; */
 }
 
 #main_body {
@@ -66,12 +66,13 @@
 	margin-top: 20px;
 	width: 150px;
 	height: 32px;
+	text-align: center;
 }
 
 
 /** 尾部分 **/
  #main_foot{
-  	position: absolute;
+  	position: relative;
   	height:50px;
   	margin:20px auto;
   	bottom: 0px;

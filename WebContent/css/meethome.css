@@ -58,10 +58,10 @@ body{
 	background: rgb(78, 204, 219);
 }
 
-#part11{
+.meettype{
 	height: 100%px;
 	line-height: 60px;
-	margin-left: -40px;
+	/** margin-left: -40px; **/
 	margin-top: 0px;
 }
 

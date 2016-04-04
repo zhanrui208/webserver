@@ -9,6 +9,7 @@ import com.web.dao.IBean;
 public class Meetinfo implements IBean{
 	private int roomID;
 	private String roomName;
+	private  int maxUserCount;
 	private String isSupportLive;//是否支持直播
 	private String isSupportMediaUpload;//是否支持在线录制
 	private String businessinfoID; //1为超清，2为高清，5标清
@@ -25,6 +26,13 @@ public class Meetinfo implements IBean{
 	}
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
+	}
+	
+	public int getMaxUserCount() {
+		return maxUserCount;
+	}
+	public void setMaxUserCount(int maxUserCount) {
+		this.maxUserCount = maxUserCount;
 	}
 	public String getIsSupportLive() {
 		return isSupportLive;

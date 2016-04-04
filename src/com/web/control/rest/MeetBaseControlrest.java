@@ -3,6 +3,8 @@ package com.web.control.rest;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import com.web.model.Userinfo;
 import com.web.server.MeetBaseServer;
 
 @Controller
+@RequestMapping("/rest")
 public class MeetBaseControlrest  extends BaseController{
 	Logger logger =LoggerFactory.getLogger("com.web.control.rest.MeetBaseControlrest");
 	
@@ -28,11 +31,12 @@ public class MeetBaseControlrest  extends BaseController{
 	 * @return
 	 */
 	@RequestMapping("/getmeetbase")
-	public String showMeetbase(String userid){
+	public String showMeetbase(HttpServletRequest req,int offset,int limit){
 		logger.info("创建会议室/getmeetbase请求，");
 		Map<String, Object> map = initMessage();
 		try {
-			List<Map<String,Object>> meetbaselist =meetBaseServer.getMeetLive(userid);
+			String userid = SessionManager.getUserSession(req);
+			List<Map<String,Object>> meetbaselist =meetBaseServer.getMeetLive(userid,offset,limit);
 			map.put("data", meetbaselist);
 		} catch (Exception e) {
 			processError(map, e);

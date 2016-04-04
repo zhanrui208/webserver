@@ -36,16 +36,18 @@ public class UserinfoServer {
 	 * @param Password
 	 * @param map
 	 */
-	public void login(String username, String password, Map<String, Object> map)
+	public boolean login(String username, String password, Map<String, Object> map)
 			throws Exception {
 
 		if (userinfoDao.checkPwd(username, password)) {
 			System.out.println("密码验证成功！");
 			map.put("success", true);
+			return true;
 		} else {
 			map.put("success", true);
 			map.put("error", "用户名或密码错误！");
 			map.put("errorCode", "601");
+			return false;
 		}
 
 	}

@@ -8,6 +8,8 @@
 
 #part10 {
 	height: 100%;
+	position: relative;
+  	margin: 0 auto;
 }
 
 #part11_picture {

@@ -17,7 +17,7 @@ function login(){
 	}).done(function(data) {
 	  if(data['success']){
 		  if (data['errorCode']==100){
-			  window.location="userhome";
+			  window.location="meethome";
 		  }else{
 			  alert(data['error']);
 		  }

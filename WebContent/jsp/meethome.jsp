@@ -7,11 +7,15 @@
    	<title>千鸿通信</title>
    	<link type="image/x-icon" href="image/qianhong.ico" rel="shortcut icon">
    
-    <link href="css/userhome.css" rel="stylesheet" type="text/css"/>
+    <link href="css/meethome.css" rel="stylesheet" type="text/css"/>
    	<link href="css/public.css" rel="stylesheet" type="text/css"/>
    
   	<script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
-  	<script type="text/javascript" src="js/userhome.js"  ></script>
+  	<script type="text/javascript" src="js/meethome.js"  ></script>
+  	<% 
+  		String username = session.getAttribute("username").toString();
+  	
+  	%>
   	
 </head>
 <body>
@@ -21,7 +25,7 @@
 			<!-- logo -->
 			<div id = "main_logo" >
 				<a id="logo" href="home" title="Agora" rel="home">
-					<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
+					<img src="image\LOGO.png" alt="加载图片失败">
 				</a>
 			</div>
 
@@ -32,7 +36,7 @@
 						
 			<!-- 显示名字 -->
 			<div id ="username_div">
-				<a id ="username_val">hello</a>
+				<a id ="username_val"><%=username%></a>
 				<a id ="username_other">,晚上好</a>
 			</div>
 		</div>
@@ -108,7 +112,6 @@
 						</div>
 						<div id="manage_div" class="col col6">
 							<button id ="editmeet">编辑</button>
-							<!--  <a href="" class="manage">管理</a> -->
 						</div>																	
 					</div>
 					<!-- 值部分 -->

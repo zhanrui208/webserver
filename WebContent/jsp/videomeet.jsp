@@ -10,8 +10,8 @@
    <link href="css/videomeet.css" rel="stylesheet" type="text/css"/>
    <link href="css/head.css" rel="stylesheet" type="text/css"/>
    <link href="css/foot.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
-   <script type="text/javascript" src="js/home.js"  ></script>
+   <script type="text/javascript" src="js/core/jquery-1.10.2.min.js" ></script>
+   <script type="text/javascript" src="js/videomeet.js"  ></script>
   </script>
 </head>
 <body>
@@ -29,7 +29,7 @@
 					<!-- 图片部分 -->
 					<div id ="part11_picture" class="picture">
 						<div class="ms-picture" style="height: 100%; opacity: 1;">
-							<img src="image/sound-waves.jpg" alt="" title="" >
+							<img class ="mainpic" src="image/sound-waves.jpg" alt="" title="" >
 						</div>
 						<div id="ms-context">
 							<p style="margin-left: 400px;">最多支持256路音视频通话</p>

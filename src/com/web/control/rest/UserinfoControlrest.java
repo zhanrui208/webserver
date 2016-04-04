@@ -48,27 +48,50 @@ public class UserinfoControlrest extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/dologin", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-	public String checklogin(HttpServletRequest req,
-			HttpServletResponse response, String username, String password,
+	public String dologin(HttpServletRequest req,
+			HttpServletResponse res, String username, String password,
 			@RequestParam(defaultValue = "0") String remember) {
 		logger.info("登陆/dologin请求，username={},password={}",username,password);
 		Map<String, Object> map = initMessage();
 		try {
-			userinfoServer.login(username, password, map);
-			if ((boolean) map.get("success")) {
+			if (userinfoServer.login(username, password, map)) {
 				Userinfo userinfo = userinfoServer.getUserinfo(username);
 				SessionManager.saveUserSession(req, userinfo.getUserID() + "");
+				SessionManager.saveSession(req, "username", username);
 				if (remember.equals("1")) {// 记住密码参数
-					SessionManager.setUserCookie(req, response, userinfo, true);
+					SessionManager.setUserCookie(req, res, userinfo, true);
 				}
 			}
 		} catch (Exception e) {
 			processError(map, e);
 			logger.error("dologin:err:"+e.getMessage());
 		}
+		
 		return SUCCESS(map);
 	}
 
+	/**
+	 * 注销
+	 * @param req
+	 * @param response
+	 * @param username
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/dologout", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	public String dologout(HttpServletRequest req,
+			HttpServletResponse response, String username) {
+		logger.info("注销/dologout请求，username={}",username);
+		Map<String, Object> map = initMessage();
+		try {
+			SessionManager.saveUserSession(req, "");
+		} catch (Exception e) {
+			processError(map, e);
+			logger.error("dologin:err:"+e.getMessage());
+		}
+		return SUCCESS(map);
+	}
+	
 	/**
 	 * 注册
 	 * 

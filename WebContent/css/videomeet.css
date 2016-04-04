@@ -2,7 +2,7 @@
 
 /** body */
 #main {
-	padding: 20px 30px;
+	/** padding: 20px 30px; **/
 }
 
 #main_body {
@@ -57,6 +57,8 @@ div.part12-col-detail {
 /** part20 */
 .part2_main_public {
 	height: 380px;
+	width: 1020px;
+  	margin: 0 auto;
 }
 
 .part2_all_public {
