@@ -93,6 +93,7 @@ $("document").ready(function(){
 	  if(data['success']){
 		  if (data['errorCode']==100){
 			  var datalist = data["data"];
+			  var meetlistdiv= "";
 			  for (var i = 0;i<datalist.length;i++){
 				  var roomID = datalist[i].roomID;
 				  var roomName =  datalist[i].roomName;
@@ -101,9 +102,29 @@ $("document").ready(function(){
 				  var hopeEndTime =datalist[i].hopeEndTime;
 				  var recordOnline = datalist[i].recordOnline;
 				  var uploadFile = datalist[i].uploadFile;
-				  
+				  meetlistdiv= meetlistdiv 
+					+' <div id ="part213'+ i + '" roomID="' + roomID +  ' class="meetlist rowvalue"> ' 
+					  	+ ' <div id ="meetname_div" class="col col1" > '
+					  		+ '	<a class="meetname" >' + roomName + '</a> '
+					  	+ ' </div>	'
+						+ ' <div id="userMaxnum_div" class="col col2"> '
+							+ '	<a class="userMaxnum">' + MaxUserCount + '(含50个浏览器)</a> '
+						+ ' </div> '
+						+ ' <div id="protype_div" class="col col3"> '
+							+ '	<a class="protype">标清产品</a> '
+						+ ' </div> '
+						+ ' <div id="savetime_div" class="col col4"> '
+							+ '	<a class="savetime">7天</a> '
+						+ ' </div> '
+						+ ' <div id="paytype_div" class="col col5"> '
+							+ '	<a class="paytype">包年包月</a> '
+						+ ' </div> '
+						+ ' <div id="manage_div" class="col col6"> '
+						+ ' 	<button id ="editmeet">编辑</button> '
+						+ ' </div>	'																
+					+ ' </div> ';
 			  }
-			  
+			  $("#part213").append(meetlistdiv); 
 		  }else{
 			  alert(data['error']);
 		  }
@@ -113,4 +134,10 @@ $("document").ready(function(){
 	}).fail(function(err) {
 		alert("服务器响应失败!");
 	});	
+  };
+  
+  function editroom(){
+	  //.$("#newTest").attr("myAttr");
+
+	  
   };

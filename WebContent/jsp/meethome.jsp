@@ -25,7 +25,7 @@
 			<!-- logo -->
 			<div id = "main_logo" >
 				<a id="logo" href="home" title="Agora" rel="home">
-					<img src="image\LOGO.png" alt="加载图片失败">
+					<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
 				</a>
 			</div>
 
@@ -36,7 +36,7 @@
 						
 			<!-- 显示名字 -->
 			<div id ="username_div">
-				<a id ="username_val"><%=username%></a>
+				<a id ="username_val">hello</a>
 				<a id ="username_other">,晚上好</a>
 			</div>
 		</div>
@@ -49,10 +49,10 @@
 			<div id ="part1">
 				<ul  id ="part11">
 					<li href="" class="hover_active">
-						<div  href="11" class ="padleft20" ><a>会议室     ></a></div>
+						<div  href="11" class ="meettype padleft20" ><a>会议室     ></a></div>
 					</li>
 					<li href="" >
-						<div  href="11" class ="padleft20"><a>会议室 2    ></a></div>
+						<div  href="11" class ="meettype padleft20"><a>会议室 2    ></a></div>
 					</li>
 				</ul>
 			</div>	
@@ -94,7 +94,8 @@
 					</div>
 					<!-- 标题 -->
 					<!-- 值部分 -->
-					<div id ="part213" class="rowvalue">
+					<div id ="part213" class="meetlist rowvalue">
+					<!--  
 						<div id ="meetname_div" class="col col1" >
 							<a class="meetname" >苹果发布会</a>
 						</div>	
@@ -111,8 +112,9 @@
 							<a class="paytype">包年包月</a>
 						</div>
 						<div id="manage_div" class="col col6">
-							<button id ="editmeet">编辑</button>
-						</div>																	
+							<button>编辑</button>
+						</div>		
+					-->																
 					</div>
 					<!-- 值部分 -->
 				</div>
