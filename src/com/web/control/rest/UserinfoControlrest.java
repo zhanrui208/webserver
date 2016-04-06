@@ -84,7 +84,8 @@ public class UserinfoControlrest extends BaseController {
 		logger.info("注销/dologout请求，username={}",username);
 		Map<String, Object> map = initMessage();
 		try {
-			SessionManager.saveUserSession(req, "");
+			SessionManager.logout(req);
+			SessionManager.removeSession(req, "username");
 		} catch (Exception e) {
 			processError(map, e);
 			logger.error("dologin:err:"+e.getMessage());

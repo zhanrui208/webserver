@@ -26,7 +26,7 @@ body{
 }
 
 #username_div {
-	width: 150px;
+	/** width: 280px; **/
 	float: right;
 	height: 100%;
 	line-height: 65px;
@@ -34,6 +34,9 @@ body{
 
 #userlogout_btn{
 	color: blue;
+	line-height: 65px;
+	/** text-decoration: none;**/
+  	/** line-height: inherit;**/
 }
 
 #userlogout_div {
@@ -41,6 +44,7 @@ body{
 	float: right;
 	height: 100%;
 	line-height: 65px;
+	text-align: center;
 }
 
 /** 第一部分*/
@@ -59,10 +63,12 @@ body{
 }
 
 .meettype{
-	height: 100%px;
-	line-height: 60px;
+	height: 60px;
 	/** margin-left: -40px; **/
 	margin-top: 0px;
+}
+.meettype a{
+	line-height: 60px;
 }
 
 #part2{

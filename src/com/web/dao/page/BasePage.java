@@ -1,11 +1,13 @@
 package com.web.dao.page;
 
-public class BasePage implements IPage {
+public abstract class BasePage implements IPage {
 
-	@Override
+	public abstract String getPage(String baseSQL, int from, int pageSize);
+
 	public String synthesisPage(String baseSQL, int from, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return this.getPage(baseSQL, from, pageSize);
+
 	}
 
 }

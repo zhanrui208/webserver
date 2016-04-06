@@ -170,7 +170,7 @@ abbr,acronym {
 	margin: 0px;
 	text-align: left;
 	font-family:Arial, Verdana, Tahoma, "宋体", Helvetica, sans-serif;
-	line-height: 150%;
+	/** line-height: 150%; **/
 }
 body {
 	/** width:1024px; **/

@@ -14,10 +14,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.control.base.Imp.BaseController;
 import com.web.server.MeetBaseServer;
 
 @Controller
-public class MeetBaseControl {
+public class MeetBaseControl extends BaseController{
 	Logger logger =LoggerFactory.getLogger("com.web.control.MeetBaseControl");
 	
 	@Autowired

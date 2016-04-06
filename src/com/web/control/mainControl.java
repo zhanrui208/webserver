@@ -6,10 +6,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.control.base.Imp.BaseController;
 import com.web.server.mainServer;
 
 @Controller
-public class mainControl {
+public class mainControl extends BaseController{
 	
 	@Autowired
 	mainServer mainserver;

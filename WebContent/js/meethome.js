@@ -25,17 +25,37 @@ $("document").ready(function(){
 	$("#part1").css("minHeight",MINH+"px");
 	$("#part2").css("minHeight",MINH+"px");
 	
+	//鼠标移动到区域的事件
+	$("#part11 li").on("mouseover",function(){
+		$(this).addClass("hover_active");
+	});
+	//鼠标离开区域事件
+	$("#part11 li").on("mouseout",function(){
+		$(this).removeClass("hover_active");
+ 	});
+	//点击事件
+	$("#part11 li").on("click",function(){
+		var num = $(this).index();
+		showback(num);
+	});
+
+	//注销
+	$("#userlogout_btn").on("click",function(){
+		logout();
+	});
+  
+	//刷新按钮
+	$("#refreshmeet").on("click",function(){
+		refreshmeet();
+	});
 	
-	  $("#part11 li").on("mouseover",function(){
-		  $(this).addClass("hover_active");
-	  });
-	  $("#part11 li").on("mouseout",function(){
-		  $(this).removeClass("hover_active");
-	  });
-	  $("#part11 li").on("click",function(){
-		  var num = $(this).index();
-		  showback(num);
-	  });
+	//创建会议室
+	$("#createmeet").on("click",function(){
+		createmeet();
+	});
+	
+	
+	
 	
 	getMeetbases(0,10);//获取会议室列表
 	
@@ -43,7 +63,6 @@ $("document").ready(function(){
 
 
 
-  
   function showback(num){
       $("#part11  li").each(function(index) {
     	  var i = index+1;
@@ -105,26 +124,26 @@ $("document").ready(function(){
 				  meetlistdiv= meetlistdiv 
 					+' <div id ="part213'+ i + '" roomID="' + roomID +  ' class="meetlist rowvalue"> ' 
 					  	+ ' <div id ="meetname_div" class="col col1" > '
-					  		+ '	<a class="meetname" >' + roomName + '</a> '
+					  	+ '		<a class="meetname" >' + roomName + '</a> '
 					  	+ ' </div>	'
 						+ ' <div id="userMaxnum_div" class="col col2"> '
-							+ '	<a class="userMaxnum">' + MaxUserCount + '(含50个浏览器)</a> '
+						+ '		<a class="userMaxnum">' + MaxUserCount + '(含50个浏览器)</a> '
 						+ ' </div> '
 						+ ' <div id="protype_div" class="col col3"> '
-							+ '	<a class="protype">标清产品</a> '
+						+ '		<a class="protype">标清产品</a> '
 						+ ' </div> '
 						+ ' <div id="savetime_div" class="col col4"> '
-							+ '	<a class="savetime">7天</a> '
+						+ '		<a class="savetime">7天</a> '
 						+ ' </div> '
 						+ ' <div id="paytype_div" class="col col5"> '
-							+ '	<a class="paytype">包年包月</a> '
+						+ '		<a class="paytype">包年包月</a> '
 						+ ' </div> '
 						+ ' <div id="manage_div" class="col col6"> '
 						+ ' 	<button id ="editmeet">编辑</button> '
 						+ ' </div>	'																
 					+ ' </div> ';
 			  }
-			  $("#part213").append(meetlistdiv); 
+			  $("#part212").append(meetlistdiv); 
 		  }else{
 			  alert(data['error']);
 		  }
@@ -136,8 +155,42 @@ $("document").ready(function(){
 	});	
   };
   
+  //编辑会议室
   function editroom(){
 	  //.$("#newTest").attr("myAttr");
 
 	  
   };
+  
+  //注销登陆
+  function logout(){
+		$.ajax({
+			url : 'rest/dologout',
+			type : 'POST',
+			datatype : 'JSON',
+			data : {
+			}
+		}).done(function(data) {
+		  if(data['success']){
+			  if (data['errorCode']==100){
+				  window.location="login";
+			  }else{
+				  alert(data['error']);
+			  }
+		  }else{
+			  alert("注销失败!");
+		  }
+		}).fail(function(err) {
+			alert("服务器响应失败!");
+		});		  
+  };
+  
+  //刷新会议室
+  function refreshmeet(){
+	  getMeetbases(0,10);
+  };
+  
+  //创建会议室
+  function createmeet(){
+	  window.location="createmeet";
+  }

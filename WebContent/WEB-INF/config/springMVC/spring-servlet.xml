@@ -42,4 +42,14 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/jsp/" p:suffix=".jsp" />
 
+
+	<bean id="LoginInterceptor" class="com.web.Filter.LoginInterceptor">     
+	</bean>    
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">    
+	    <property name="interceptors">    
+	        <list>    
+	            <ref bean="LoginInterceptor"/>    
+	        </list>    
+	    </property>    
+	</bean> 
 </beans>

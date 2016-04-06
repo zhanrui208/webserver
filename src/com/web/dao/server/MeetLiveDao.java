@@ -131,9 +131,9 @@ public class MeetLiveDao extends CommonDao {
 		String sql = " select RoomID from " + m_ROOMUSERS ;
 		String sqlwhere = "";
 		if (userid !=null){
-			sqlwhere = " where UserID = ?";
+			sqlwhere = " where UserID = ? ";
 		}
-		List<Map<String,Object>> roomidlist = query(sql+sqlwhere,new String[]{userid},offset,limit);
+		List<Map<String,Object>> roomidlist = query(sql+sqlwhere,new Object[]{userid},offset,limit);
 		return roomidlist;
 	}
 	//----------------4

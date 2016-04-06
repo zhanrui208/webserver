@@ -47,7 +47,7 @@ public class CommonDao implements IDao{
 
 	// 页属性
 //	@Autowired
-	private IPage page;
+	private static IPage page;
 
 	// 连接管理器
 	private static ConnectionProvider connectionProvider;

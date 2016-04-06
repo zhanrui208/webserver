@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.base.session.SessionManager;
 import com.web.control.base.Imp.BaseController;
@@ -30,7 +32,8 @@ public class MeetBaseControlrest  extends BaseController{
 	 * @param userid
 	 * @return
 	 */
-	@RequestMapping("/getmeetbase")
+	@ResponseBody
+	@RequestMapping(value = "/getmeetbase", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String showMeetbase(HttpServletRequest req,int offset,int limit){
 		logger.info("创建会议室/getmeetbase请求，");
 		Map<String, Object> map = initMessage();
@@ -50,7 +53,8 @@ public class MeetBaseControlrest  extends BaseController{
 	 * @param meetLiveBase
 	 * @return
 	 */
-	@RequestMapping("/createmeetbase")
+	@ResponseBody
+	@RequestMapping(value = "/createmeetbase", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String createMeetbase(MeetLiveBase meetLiveBase){
 		logger.info("创建会议室/createmeetbase请求，meet={},password={}",meetLiveBase);
 		Map<String, Object> map = initMessage();
@@ -69,7 +73,8 @@ public class MeetBaseControlrest  extends BaseController{
 	 * @param meetLiveBase
 	 * @return
 	 */
-	@RequestMapping("/updatemeetbase")
+	@ResponseBody
+	@RequestMapping(value = "/updatemeetbase", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String updateMeetbase(MeetLiveBase meetLiveBase){
 		logger.info("创建会议室/updateMeetbase请求，meet={},password={}",meetLiveBase);
 		Map<String, Object> map = initMessage();
