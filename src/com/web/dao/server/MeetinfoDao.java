@@ -9,8 +9,7 @@ import com.web.model.Meetinfo;
 
 @Repository
 public class MeetinfoDao  extends CommonDao{
-	private static String m_TableName="t_";
-	private static String m_ReTableName="t_";
+	private static String m_TableName="t_roominfo";
 	
 	public List<Meetinfo> getMeetList() throws Exception{
 		String sql =" select * from " +  m_TableName ;

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -8,19 +10,19 @@
 
 <!-- 可选的Bootstrap主题文件（一般不使用） -->
 <!-- <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap-theme.min.css"></script>  -->
-    <link href="D:\Java\xiangmu\webserver\WebContent\css\about.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css\head.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css\foot.css" rel="stylesheet" type="text/css"/>
-   	<link href="D:\Java\xiangmu\webserver\WebContent\css\public.css" rel="stylesheet" type="text/css"/>
-	<link href="D:\Java\xiangmu\webserver\WebContent\css\editmeet.css" rel="stylesheet" type="text/css"/>
+    <link href="css/about.css" rel="stylesheet" type="text/css"/>
+   	<link href="css/head.css" rel="stylesheet" type="text/css"/>
+   	<link href="css/foot.css" rel="stylesheet" type="text/css"/>
+   	<link href="css/public.css" rel="stylesheet" type="text/css"/>
+	<link href="css/editmeet.css" rel="stylesheet" type="text/css"/>
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="D:\Java\xiangmu\webserver\WebContent\js\public.js"></script>
-	<script type="text/javascript" src="D:\Java\xiangmu\webserver\WebContent\js\editmeet.js"></script>
+	<script type="text/javascript" src="js/public.js"></script>
+	<script type="text/javascript" src="js/editmeet.js"></script>
 	
 </head>
 <body>
@@ -30,7 +32,7 @@
 		<!-- logo -->
 		<div class ="heg80" id = "main_logo " >
 			<a  id="logo" href="home" title="Agora" rel="home">
-				<img src="D:\Java\xiangmu\webserver\WebContent\image\LOGO.png" alt="加载图片失败">
+				<img src="image/LOGO.png" alt="加载图片失败">
 			</a>
 		</div>
 		<!-- logo -->
@@ -38,10 +40,10 @@
 	<!-- 头部分 -->
 
 	<div id ="main_div">
-	
+		<input type="hidden" name="roomid" id = "roomid" value = "${roomid}" >
 		<div class="container"> 
-			<button type="button" class="btn btn-default">创建  </button>
-			<button type="button" class="btn btn-default">返回列表   </button>
+			<button type="button" class="btn btn-default" id ="creRoom">创建  </button>
+			<button type="button" class="btn btn-default" id ="reRoomList">返回列表   </button>
 			
 			 <HR style="FILTER: progid:DXImageTransform.Microsoft.Glow(color=#987cb9,strength=10)" width="100%" color=#987cb9 SIZE=1>
 

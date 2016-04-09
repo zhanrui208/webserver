@@ -54,8 +54,10 @@ $("document").ready(function(){
 		createmeet();
 	});
 	
-	
-	
+	//会议室编辑
+	$("#editmeet").on("click",function(){
+		window.location="editmeet";
+	});
 	
 	getMeetbases(0,10);//获取会议室列表
 	
@@ -86,16 +88,7 @@ $("document").ready(function(){
 	  $('#part2'+num).addClass("part_hide");
   };
   
-  //会议室编辑
-  $("#editmeet").on("click",function(){
-	  window.location="editmeet";
-  });
-  
-  //会议室创建
-  $("#createmeet").on("click",function(){
-	  window.location="createmeet";
-  });
-  
+
   //获取所有会议室基本信息
   function getMeetbases(offset,limit){
 	var token ="";  

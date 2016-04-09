@@ -3,6 +3,11 @@
  */
 
 $("document").ready(function(){
+	
+	//初始化数据
+	init();
+	
+	
 	//绑定单选按钮点击事件
 	$("input[name='optRadios1']").bind("click",function(){
 		var selval = $("input[name='optRadios1']:checked").val();
@@ -39,19 +44,96 @@ $("document").ready(function(){
 			$("#time").focus();
 		}
 	});
-	
-	
-	
+
 	//保存会议室
 	$("#save").bind("click",function(){
 		savemeet();
 	});
 	
+	//创建会议室
+	$("#creRoom").bind("click",function(){
+		createmeet();
+	});
 	
-	
-	
-
+	//返回会议列表
+	$("#reRoomList").bind("click",function(){
+		roomList();
+	});
+		
 });
+
+//页面加载话初始化数据
+function init(){
+	var roomid = $("#roomid").val().trim();
+	if (roomid !=null && roomid.length>0){
+		getMeetBaseByRoomId(roomid);
+	}else{
+		clearMeetBase();
+	}
+}
+
+function getMeetBaseByRoomId(roomid){
+	$.ajax({
+		url : 'rest/getmeetbasebyroomid',
+		type : 'POST',
+		datatype : 'JSON',
+		data : {
+			'token' :token,
+			'roomid' : roomid
+		}
+	}).done(function(data) {
+	  if(data['success']){
+		  if (data['errorCode']==100){
+			  loadMeetBase(data['data']);
+		  }else {
+			  alert(data['error']);
+		  }
+	  }
+	  else{
+		  alert("保存会议室失败!");
+	  }
+	}).fail(function(err) {
+		alert("服务器响应失败!");
+	});	
+}
+
+//清空所哟的数据
+function clearMeetBase(){
+	$("#meetname").val();
+	$("#usercounts").val();
+	$("#time").val();
+	$("#type").val();
+}
+//加载数据
+function loadMeetBase(data){
+	$("#meetname").val(data.roomName);
+	$("#usercounts").val(data.maxUserCount);
+	$("#time").val(5);
+	
+	if (data.businessinfoID == "1"){
+		$("#type").get(0).selectedIndex=1 ;
+	}else if (data.businessinfoID == "2"){
+		$("#type").get(0).selectedIndex=2 ;
+	}else if (data.businessinfoID == "5"){
+		$("#type").get(0).selectedIndex=3 ;
+	}
+	
+	if (data.isSupportLive == "1"){
+		$("input[name='optRadios1']").attr('disabled',true);
+	}else{
+		$("input[name='optRadios1']").attr('disabled',false);
+	}
+	if (data.isSupportMediaUpload == "1"){
+		$("input[name='optRadios2']").attr('disabled',true);
+	}else{
+		$("input[name='optRadios2']").attr('disabled',false);
+	}
+}
+
+
+
+
+
 
 //人数限制
 function chkusercounts(usercounts){
@@ -73,10 +155,11 @@ function chktime(time){
  * 保存meet
  */
 function savemeet() {
-	var meetname = $("#meetname").val();
-	var usercounts = $("#usercounts").val();
-	var time = $("#time").val();
-	var type = $("#type").val();
+	var roomid = $("#roomid").val().trim();
+	var meetname = $("#meetname").val().trim();
+	var usercounts = $("#usercounts").val().trim();
+	var time = $("#time").val().trim();
+	var type = $("#type").val().trim();
 	
 	var zhibo = "0";
 	var luzhi = "0";
@@ -119,7 +202,12 @@ function savemeet() {
 	}
 	
 	var token=$("#token").val();
-		
+	
+	//是否是新room
+	var newroom = "0";
+	if (roomid != null){
+		newroom = "1";
+	}
 		
 	$.ajax({
 		url : 'rest/savemeet',
@@ -129,6 +217,8 @@ function savemeet() {
 			'token' :token,
 			'meetname' : meetname,
 			'usercounts' : usercounts,
+			'roomid' :roomid,
+			'newroom' :newroom,
 			'time' : time,
 			'type' : type,
 			'zhibo': zhibo,
@@ -165,6 +255,16 @@ function compute(){
 	}	
 	var amount = price*time*usercounts;
 };
+
+
+//创建会议室
+function createmeet(){
+	  window.location="createmeet";
+}
+//返回会议列表
+function roomList(){
+	window.location="meethome";
+}
 
 //判断是否是数字
 function isnum(event){
