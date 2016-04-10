@@ -37,13 +37,13 @@ public class MeetBaseControlrest  extends BaseController{
 	 * @return
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/getmeetbase", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
+	@RequestMapping(value = "/getmeetbaselist", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
 	public String showMeetbase(HttpServletRequest req,int offset,int limit){
 		logger.info("创建会议室/getmeetbase请求，");
 		Map<String, Object> map = initMessage();
 		try {
 			String userid = SessionManager.getUserSession(req);
-			List<Map<String,Object>> meetbaselist =meetBaseServer.getMeetLive(userid,offset,limit);
+			List<MeetLiveBase> meetbaselist =meetBaseServer.getMeetLiveList(userid,offset,limit);
 			map.put("data", meetbaselist);
 		} catch (Exception e) {
 			processError(map, e);
@@ -59,11 +59,11 @@ public class MeetBaseControlrest  extends BaseController{
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/getmeetbasebyroomid", produces = { "application/json;charset=UTF-8" }, method = RequestMethod.POST)
-	public String getMeetbasebyimeetd(HttpServletRequest req,String meetid){
+	public String getMeetbasebyimeetd(HttpServletRequest req,String roomid){
 		logger.info("创建会议室/getmeetbasebymeetid请求，");
 		Map<String, Object> map = initMessage();
 		try {
-			List<MeetLiveBase> meetbaselist =meetBaseServer.getMeetLivebyRoomId(meetid);
+			List<MeetLiveBase> meetbaselist =meetBaseServer.getMeetLivebyRoomId(roomid);
 			if (meetbaselist != null && !meetbaselist.isEmpty()){
 				map.put("data", meetbaselist.get(0));
 			}else{
@@ -110,6 +110,7 @@ public class MeetBaseControlrest  extends BaseController{
 				MeetLiveBase meetLiveBase = meetBaseServer.getRoomBase(roomBaseMap,true);
 				meetLiveBase.setUserID(Integer.parseInt(userid));
 				meetBaseServer.createMeetLive(meetLiveBase);
+				map.put("data", meetLiveBase);
 			}else{
 				MeetLiveBase meetLiveBase = meetBaseServer.getRoomBase(roomBaseMap,false);
 				meetBaseServer.updateMeetLive(meetLiveBase,roomid+"");

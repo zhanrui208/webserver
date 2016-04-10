@@ -731,7 +731,27 @@ public class CommonDao implements IDao{
 			String whereSql, Object[] whereParams) throws Exception {
 		return updateBean(bean, tableName, whereSql, whereParams, true);
 	}
-
+	/**
+	 * 更新实体,过滤null值的属性字段
+	 * 
+	 * @param <T>
+	 * @param bean
+	 *            实体
+	 * @param tableName
+	 *            表名
+	 * @param whereSql
+	 *            sql中的where段
+	 * @param whereParams
+	 *            where的?的值
+	 * @return
+	 * @throws Exception
+	 */
+	public <T extends IBean> int updateBean(T bean, String tableName,
+			String whereSql, Object[] whereParams,String[] ignoreCols) throws Exception {
+		return updateBean(bean, tableName, whereSql, whereParams, true,ignoreCols);
+	}
+	
+	
 	/**
 	 * 更新实体
 	 * 
@@ -798,6 +818,81 @@ public class CommonDao implements IDao{
 		return this.execute(sb.toString(), params.toArray());
 	}
 
+	/**
+	 * 更新实体
+	 * 
+	 * @param <T>
+	 * @param bean
+	 *            实体
+	 * @param tableName
+	 *            表名
+	 * @param whereSql
+	 *            sql中的where段
+	 * @param whereParams
+	 *            where的?的值
+	 * @param ignoreNull
+	 *            是否过滤null值的属性字段
+	 *   
+	 * @param ignoreCols
+	 *            忽略的属性字段          
+	 * @return
+	 * @throws Exception
+	 */
+	public <T extends IBean> int updateBean(T bean, String tableName,
+			String whereSql, Object[] whereParams, boolean ignoreNull,
+			String[] ignoreCols)throws Exception {
+		// 分析bean中的数据
+		StringBuffer sb = new StringBuffer();
+		sb.append(" UPDATE ");
+		sb.append(tableName);
+		sb.append(" SET ");
+		List<Object> params = new ArrayList<Object>();
+		List<String> fv = new ArrayList<String>();
+		Class clazz = bean.getClass();
+		Field[] fields = clazz.getDeclaredFields();
+		for (Field f : fields) {
+			if (Modifier.isStatic(f.getModifiers())) {
+				continue;
+			}
+			String name = f.getName();
+			
+			// 有需要忽略的列，则不生成指定的字段的sql
+			if (ignoreCols != null && isIgnoreCols(name, ignoreCols)) {
+				continue;
+			}
+			
+			Method method = null;
+			String capitalize = StringUtils.capitalize(name);
+			try {
+				method = clazz.getMethod("get" + capitalize);
+			} catch (Exception e) {
+			}
+			if (method == null) {
+				Class<?> type = f.getType();
+				if (type == Boolean.class || type == boolean.class) {
+					try {
+						method = clazz.getMethod("is" + capitalize);
+					} catch (Exception e) {
+					}
+				}
+			}
+			if (method == null) {
+				continue;
+			}
+			Object value = method.invoke(bean, new Object[0]);
+			if (value == null && ignoreNull) {
+				continue;
+			}
+			fv.add(name + "=?");
+			params.add(value);
+		}
+		sb.append(ArrayUtil.join(fv, ","));
+		sb.append(" where ");
+		sb.append(whereSql);
+		params.addAll(Arrays.asList(whereParams));
+		return this.execute(sb.toString(), params.toArray());
+	}	
+	
 	public <T extends IBean> int updateBean(T bean, String idcol,
 			String tableName, String[] ignoreCols) throws Exception {
 		// 分析bean中的数据

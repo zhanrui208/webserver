@@ -2,7 +2,7 @@
 
 /** 内容部分*/
 #main {
-	padding: 20px 30px;
+	/**padding: 20px 30px;**/
 }
 
 #speheight{
@@ -112,7 +112,7 @@
 
 /** 尾部分 **/
  #main_foot{
-  	position: absolute;
+  	position: relative;
   	height:50px;
   	margin:20px auto;
   	bottom: 0px;

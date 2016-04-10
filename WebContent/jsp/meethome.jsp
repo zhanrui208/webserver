@@ -91,28 +91,8 @@
 					</div>
 					<!-- 标题 -->
 					<!-- 值部分 -->
-					<!--  
-					<div id ="part213" class="meetlist rowvalue">
-						<div id ="meetname_div" class="col col1" >
-							<a class="meetname" >苹果发布会</a>
-						</div>	
-						<div id="userMaxnum_div" class="col col2">
-							<a class="userMaxnum">300(含50个浏览器)</a>
-						</div>
-						<div id="protype_div" class="col col3">
-							<a class="protype">标清产品</a>
-						</div>
-						<div id="savetime_div" class="col col4">
-							<a class="savetime">7天</a>
-						</div>
-						<div id="paytype_div" class="col col5">
-							<a class="paytype">包年包月</a>
-						</div>
-						<div id="manage_div" class="col col6">
-							<button>编辑</button>
-						</div>																						
+					<div id="part213">
 					</div>
-					-->	
 					<!-- 值部分 -->
 				</div>
 				<div id ="part22"  class="part_hide">

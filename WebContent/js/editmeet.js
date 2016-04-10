@@ -73,6 +73,7 @@ function init(){
 }
 
 function getMeetBaseByRoomId(roomid){
+	var token=$("#token").val();
 	$.ajax({
 		url : 'rest/getmeetbasebyroomid',
 		type : 'POST',
@@ -204,9 +205,9 @@ function savemeet() {
 	var token=$("#token").val();
 	
 	//是否是新room
-	var newroom = "0";
+	var newroom = "1";
 	if (roomid != null){
-		newroom = "1";
+		newroom = "0";
 	}
 		
 	$.ajax({
@@ -228,6 +229,7 @@ function savemeet() {
 	  if(data['success']){
 		  if (data['errorCode']==100){
 			  alert("保存会议室成功!");
+			  $("#roomid").val(data.roomID);
 		  }else {
 			  alert(data['error']);
 		  }

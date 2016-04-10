@@ -56,7 +56,16 @@ public class MeetLiveDao extends CommonDao {
 	public List<MeetLiveBase> getMeetBaseListByUserId(String userid) throws Exception {
 		return getMeetBaseList(null,userid,-1,-1);
 	}
-
+	/**
+	 * 按用户ID获取所有会议室
+	 * @param roomid
+	 * @param userid
+	 * @return
+	 * @throws Exception
+	 */
+	public List<MeetLiveBase> getMeetBaseListByUserId(String userid,int offset,int limit) throws Exception {
+		return getMeetBaseList(null,userid,offset,limit);
+	}
 	/**
 	 * 按roomID获取所有会议室
 	 * @param roomid
@@ -71,14 +80,19 @@ public class MeetLiveDao extends CommonDao {
 	
 	public List<MeetLiveBase> getMeetBaseList(String roomid,String userid,int offset, int limit) throws Exception {
 		String sqlwhere ="";
+		String params[] = null;
 		if (roomid!=null && userid !=null){
 			sqlwhere = " where t1.RoomID = ? and t3.UserID = ? ";
+			params = new String[]{roomid,userid};
 		}else if(roomid==null && userid !=null){
 			sqlwhere = " where t3.UserID = ? ";
+			params = new String[]{userid};
 		}else if(roomid!=null && userid == null){
 			sqlwhere = " where t1.RoomID = ? ";
+			params = new String[]{roomid};
+			
 		}
-		List<MeetLiveBase> meetlist = queryBeans(getBaseSQL()+sqlwhere, MeetLiveBase.class,offset,limit,roomid,userid);
+		List<MeetLiveBase> meetlist = queryBeans(getBaseSQL()+sqlwhere,params, MeetLiveBase.class,offset,limit);
 		return meetlist;
 	}
 	//----------------1
@@ -186,12 +200,12 @@ public class MeetLiveDao extends CommonDao {
 	//----------------5
 
 	//----6：根据用户和会议室名称查询会议室记录
-	public Meetinfo geSingleMeetByRoomName(String userid,String name) throws Exception{
+	public Meetinfo geSingleMeetByRoomNameAndUserid(String userid,String name) throws Exception{
 		String sql =" select " + getSelFileds2()  
 					+ " from " +  m_ROOMINFO + " t1 "	
 					+ " inner join " + m_ROOMUSERS +" t3  on t1.RoomID = t3.RoomID"
 					+ " where t1.RoomName= ?  t3.userid = ? " 
-					+ " order t1.RoomID by desc ";
+					+ " order  by t1.RoomID desc ";
 		List<Meetinfo> Meetlist = queryBeans(sql, Meetinfo.class,new String[]{userid,name});
 		return Meetlist.get(0);
 	}
@@ -200,6 +214,16 @@ public class MeetLiveDao extends CommonDao {
 		return connectFileds("t1" ,getSel("t1",Meetinfo.class) ,"t3",getSel("t3",Roomusers.class));
 	}
 	//-----6
+	
+	//----7：根据会议室名称查询会议室记录
+	public Meetinfo geSingleMeetByRoomName(String name) throws Exception{
+		String sql = " select RoomID from " + m_ROOMINFO 
+					+ " where RoomName= ?   " 
+					+ " order  by RoomID desc ";
+		List<Meetinfo> Meetlist = queryBeans(sql, Meetinfo.class,new String[]{name});
+		return Meetlist.get(0);
+	}
+	//-----7
 	
 //------------------------------------------------------------	
 //------------------------------------------------------------	
@@ -212,11 +236,11 @@ public class MeetLiveDao extends CommonDao {
 	 * @return
 	 */
 	private <T extends IBean> String  getSel(String pre, Class<T> cls) throws Exception {
-		StringBuffer sbu = null;
+		StringBuffer sbu = new StringBuffer();
 		String sel ="";
-		Field[] fields = cls.getClass().getFields();
+		Field[] fields = cls.getDeclaredFields();
 		for (Field field : fields) {
-			sbu.append(pre + "." + field.getName());
+			sbu.append(pre + "." + field.getName() + ",");
 		}
 		sel = sbu.toString();
 		sel = sel.substring(0, sel.length() - 1);
@@ -310,7 +334,8 @@ public class MeetLiveDao extends CommonDao {
 		String whereSql =" RoomID = ? ";
 		String[] whereParams = new String[]{id};
 		boolean ignoreNull =true;
-		return upMeetinfo(meetinfo,whereSql,whereParams,ignoreNull);
+		String[] ignoreCols = new String[]{"roomID"};
+		return upMeetinfo(meetinfo,whereSql,whereParams,ignoreNull,ignoreCols);
 	}
 	
 	/**
@@ -330,7 +355,9 @@ public class MeetLiveDao extends CommonDao {
 	
 	public int upMeetinfo(Meetinfo meetinfo,String whereSql, Object[] whereParams, boolean ignoreNull) throws Exception{
 		return updateBean(meetinfo,m_ROOMINFO,whereSql,whereParams,ignoreNull);
-		
+	}
+	public int upMeetinfo(Meetinfo meetinfo,String whereSql, Object[] whereParams, boolean ignoreNull,String ignoreCols[]) throws Exception{
+		return updateBean(meetinfo,m_ROOMINFO,whereSql,whereParams,ignoreNull,ignoreCols);
 	}
 	
 	public int upLiveshop(Liveshopping liveshopping,String whereSql, Object[] whereParams, boolean ignoreNull) throws Exception{

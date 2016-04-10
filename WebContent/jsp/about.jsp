@@ -11,6 +11,7 @@
    <link href="css/head.css" rel="stylesheet" type="text/css"/>
    <link href="css/foot.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.1.min.js" ></script>
+   <script type="text/javascript" src="js/about.js"  ></script>
   </script>
 </head>
 <body>

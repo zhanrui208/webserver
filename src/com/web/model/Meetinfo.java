@@ -15,6 +15,8 @@ public class Meetinfo implements IBean{
 	private String businessinfoID; //1为超清，2为高清，5标清
 	private String  hopeStartTime;//开始时间
 	private String hopeEndTime; //会议室结束时间
+	private int departID;//必填项
+	private float LiveBalance;//必填项
 	public int getRoomID() {
 		return roomID;
 	}
@@ -63,6 +65,18 @@ public class Meetinfo implements IBean{
 	}
 	public void setHopeEndTime(String hopeEndTime) {
 		this.hopeEndTime = hopeEndTime;
+	}
+	public int getDepartID() {
+		return departID;
+	}
+	public void setDepartID(int departID) {
+		this.departID = departID;
+	}
+	public float getLiveBalance() {
+		return LiveBalance;
+	}
+	public void setLiveBalance(float liveBalance) {
+		LiveBalance = liveBalance;
 	}
 	
 	

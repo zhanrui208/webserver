@@ -8,10 +8,11 @@ $("document").ready(function(){
 	|| document.documentElement.clientWidth
 	|| document.body.clientWidth;
 	
-	WD=WD-18;
+	WD=WD-23;
 	
 	$(".mainpic").css("width",WD);
 	$("#main_body").css("width",WD);
 	
-	
+	$("body").width(WD);
+	$("#main").width(WD);
 });	

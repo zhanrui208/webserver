@@ -30,6 +30,10 @@
 	height: 100%;
 }
 
+#ms-context p{
+	text-align: center;
+}
+
 /** part1 **/
 #part121 {
 	height: 250px;

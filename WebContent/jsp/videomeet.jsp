@@ -32,10 +32,10 @@
 							<img class ="mainpic" src="image/sound-waves.jpg" alt="" title="" >
 						</div>
 						<div id="ms-context">
-							<p style="margin-left: 400px;">最多支持256路音视频通话</p>
-							<p style="margin-left: 400px;">支持浏览器直播会议</p>
-							<p style="margin-left: 400px;">支持会议在线录制，无需上传，直接点播观看</p>
-							<p style="margin-left: 400px;">业内最低的使用费用</p>
+							<p>最多支持256路音视频通话</p>
+							<p>支持浏览器直播会议</p>
+							<p>支持会议在线录制，无需上传，直接点播观看</p>
+							<p>业内最低的使用费用</p>
 						</div>
 						<div style="text-align:center;margin-top: 80px;">
 							<a ref="" style="font-size:28px;color: #ffffff;">立即下载</a>

@@ -14,7 +14,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.web.base.session.SessionManager;
 import com.web.control.base.Imp.BaseController;
+import com.web.model.MeetLiveBase;
 import com.web.server.MeetBaseServer;
 
 @Controller
@@ -52,9 +54,18 @@ public class MeetBaseControl extends BaseController{
 	@RequestMapping(value ="/editmeet")
 	public ModelAndView editmeet(HttpServletRequest res){
 		logger.info("接受editmeet请求，");
+		String roomid = (String) res.getParameter("roomid");
+		String userid = SessionManager.getUserSession(res);
 		ModelAndView mov = new ModelAndView();
-		//saveToken(res);
-		mov.addObject("meet", "1");
+		
+		List<MeetLiveBase>  meetLiveBaseList =  meetBaseServer.getMeetLiveListByRoomidAndUserId(userid, roomid);
+		if (meetLiveBaseList ==null || meetLiveBaseList.size() == 0 ){
+			mov.setViewName("errPage");
+			return mov;
+		}else{
+//			mov.addObject("data",meetLiveBaseList.get(0));
+		}
+		mov.addObject("roomid", roomid);
 		mov.setViewName("editmeet");
 		return mov;
 	}

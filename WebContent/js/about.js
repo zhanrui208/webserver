@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 $("document").ready(function(){
 	//窗体的宽度
 	var WD=window.innerWidth

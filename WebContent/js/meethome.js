@@ -93,7 +93,7 @@ $("document").ready(function(){
   function getMeetbases(offset,limit){
 	var token ="";  
 	$.ajax({
-		url : 'rest/getmeetbase',
+		url : 'rest/getmeetbaselist',
 		type : 'POST',
 		datatype : 'JSON',
 		data : {
@@ -106,37 +106,47 @@ $("document").ready(function(){
 		  if (data['errorCode']==100){
 			  var datalist = data["data"];
 			  var meetlistdiv= "";
-			  for (var i = 0;i<datalist.length;i++){
-				  var roomID = datalist[i].roomID;
-				  var roomName =  datalist[i].roomName;
-				  var MaxUserCount = datalist[i].maxUserCount;
-				  var businessinfoID = datalist[i].businessinfoID;
-				  var hopeEndTime =datalist[i].hopeEndTime;
-				  var recordOnline = datalist[i].recordOnline;
-				  var uploadFile = datalist[i].uploadFile;
-				  meetlistdiv= meetlistdiv 
-					+' <div id ="part213'+ i + '" roomID="' + roomID +  ' class="meetlist rowvalue"> ' 
-					  	+ ' <div id ="meetname_div" class="col col1" > '
-					  	+ '		<a class="meetname" >' + roomName + '</a> '
-					  	+ ' </div>	'
-						+ ' <div id="userMaxnum_div" class="col col2"> '
-						+ '		<a class="userMaxnum">' + MaxUserCount + '(含50个浏览器)</a> '
-						+ ' </div> '
-						+ ' <div id="protype_div" class="col col3"> '
-						+ '		<a class="protype">标清产品</a> '
-						+ ' </div> '
-						+ ' <div id="savetime_div" class="col col4"> '
-						+ '		<a class="savetime">7天</a> '
-						+ ' </div> '
-						+ ' <div id="paytype_div" class="col col5"> '
-						+ '		<a class="paytype">包年包月</a> '
-						+ ' </div> '
-						+ ' <div id="manage_div" class="col col6"> '
-						+ ' 	<button id ="editmeet">编辑</button> '
-						+ ' </div>	'																
-					+ ' </div> ';
+			  $("#part213").html('');
+			  if (datalist !=null){
+				  for (var i = 0;i<datalist.length;i++){
+					  var roomID = datalist[i].roomID;
+					  var roomName =  datalist[i].roomName;
+					  var MaxUserCount = datalist[i].maxUserCount;
+					  var businessinfoID = datalist[i].businessinfoID;
+					  var hopeEndTime =datalist[i].hopeEndTime;
+					  var recordOnline = datalist[i].recordOnline;
+					  var uploadFile = datalist[i].uploadFile;
+					  meetlistdiv= meetlistdiv 
+						+' <div id ="part213'+ i + '" roomID="' + roomID +  '" class="meetlist rowvalue"> ' 
+						  	+ ' <div id ="meetname_div" class="col col1" > '
+						  	+ '		<a class="meetname" >' + roomName + '</a> '
+						  	+ ' </div>	'
+							+ ' <div id="userMaxnum_div" class="col col2"> '
+							+ '		<a class="userMaxnum">' + MaxUserCount + '(含50个浏览器)</a> '
+							+ ' </div> '
+							+ ' <div id="protype_div" class="col col3"> '
+							+ '		<a class="protype">标清产品</a> '
+							+ ' </div> '
+							+ ' <div id="savetime_div" class="col col4"> '
+							+ '		<a class="savetime">7天</a> '
+							+ ' </div> '
+							+ ' <div id="paytype_div" class="col col5"> '
+							+ '		<a class="paytype">包年包月</a> '
+							+ ' </div> '
+							+ ' <div id="manage_div" class="col col6"> '
+							+ ' 	<button class ="editmeet"' + '" roomID="' + roomID + '" style = "margin-top: 10px;">编辑</button> '
+							+ ' </div>	'																
+						+ ' </div> ';
+				  	}		
+				  	$("#part213").append(meetlistdiv); 
+					//会议室编辑
+					$(".editmeet").on("click",function(){
+						var id = this.getAttribute("roomid");
+						window.location="editmeet?roomid=" + id;
+					});
+			  }else{
+				  $("#part213").append('<div class="meetlist rowvalue" ><a>无数据</a></div>');
 			  }
-			  $("#part212").append(meetlistdiv); 
 		  }else{
 			  alert(data['error']);
 		  }

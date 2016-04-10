@@ -12,6 +12,11 @@ public class Liveshopping implements IBean{
 	private String uploadFile;//是否支持上传文件
 	private String  createTimer;
 	private String  processFlag;//处理标志，0为未处理，1为处理，下单时状态为未处理，即默认为0
+	private int money;
+	private int codeRate;
+	private String webUserName;
+	private String webPassword;
+	private String updateTimer;
 	public int getRoomID() {
 		return roomID;
 	}
@@ -41,6 +46,36 @@ public class Liveshopping implements IBean{
 	}
 	public void setProcessFlag(String processFlag) {
 		this.processFlag = processFlag;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	public int getCodeRate() {
+		return codeRate;
+	}
+	public void setCodeRate(int codeRate) {
+		this.codeRate = codeRate;
+	}
+	public String getWebUserName() {
+		return webUserName;
+	}
+	public void setWebUserName(String webUserName) {
+		this.webUserName = webUserName;
+	}
+	public String getWebPassword() {
+		return webPassword;
+	}
+	public void setWebPassword(String webPassword) {
+		this.webPassword = webPassword;
+	}
+	public String getUpdateTimer() {
+		return updateTimer;
+	}
+	public void setUpdateTimer(String updateTimer) {
+		this.updateTimer = updateTimer;
 	}
 	
 }
