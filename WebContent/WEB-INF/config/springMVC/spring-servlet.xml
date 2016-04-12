@@ -22,20 +22,28 @@
 	与AnnotationMethodHandlerAdapter这两个bean,所以就没有机会再给它注入interceptors属性，就无法指定拦截器 ;
 	它是spring MVC为@Controllers分发请求所必须的。并提供了：数据绑定支持，@NumberFormatannotation支持，
 	@DateTimeFormat支持，@Valid支持，读写XML的支持（JAXB），读写JSON的支持（Jackson）。-->
-	<mvc:annotation-driven /> 
+	 <mvc:annotation-driven /> 
 	
-	<!-- 静态文件通过默认的servlet进行处理 -->
+	<!-- 静态文件通过默认的servlet进行处理 
 	<mvc:default-servlet-handler /> 
 	<mvc:resources location="/image/" mapping="/image/**"/> 
 	<mvc:resources location="/css/" mapping="/css/**"/> 
 	<mvc:resources location="/js/" mapping="/js/**"/>	
-
+    -->
 	
 	
-	<!-- 完成请求和注解POJO的映射;AnnotationMethodHandlerAdapter类，通过注解，把一个URL映射到Controller类的方法上 -->	
+	<!-- 完成请求和注解POJO的映射;AnnotationMethodHandlerAdapter类，通过注解，把一个URL映射到Controller类的方法上 
 	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->	
+	<!-- 如果是3.1之前已经默认注入AnnotationMethodHandlerAdapter，3.1之后默认注入RequestMappingHandlerAdapter只需加上相关的jar包 -->	
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"  
+        p:ignoreDefaultModelOnRedirect="true" >  
+            <property name="messageConverters">  
+                <list>  
+                    <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>  
+                </list>  
+            </property>  
+        </bean> 
 		
 		<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->  <!-- 配置视图解析器，即如何把handler方法返回值解析为实际的物理视图 --> 
 	<bean
@@ -52,4 +60,11 @@
 	        </list>    
 	    </property>    
 	</bean> 
+	
+		<!-- 静态文件通过默认的servlet进行处理 -->
+	<mvc:default-servlet-handler /> 
+	<mvc:resources location="/image/" mapping="/image/**"/> 
+	<mvc:resources location="/css/" mapping="/css/**"/> 
+	<mvc:resources location="/js/" mapping="/js/**"/>	
+    
 </beans>
